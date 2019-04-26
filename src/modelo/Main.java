@@ -3,9 +3,12 @@ package modelo;
 import texto.*;
 public class Main {
     public static void main (String[] args) {
-        int filas=7;
+        int filas=7;  
         int columnas=7;
         int i=0;
+        //excepcion si filas negativo
+        if (filas<0) {filas=0;}
+        
         //MATRIZ JUEGO
         //crea el objeto juego
         Juego juego = new Juego(); 

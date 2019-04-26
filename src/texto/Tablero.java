@@ -10,7 +10,7 @@ public class Tablero {
             if (lineaImpar) {
                 caracter="-";
                 for (int columna=1;columna<8*columnas;columna++) {System.out.print(caracter);}    
-                System.out.print("|\n"); 
+                System.out.println("|"); 
             } else {
                 //linea par
                 caracter=" ";
