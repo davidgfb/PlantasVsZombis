@@ -8,7 +8,6 @@ public class Main {
         int i=0;
         //excepcion si filas negativo
         if (filas<0) {filas=0;}
-        
         //MATRIZ JUEGO
         //crea el objeto juego
         Juego juego = new Juego(); 
@@ -23,24 +22,19 @@ public class Main {
                 i++;
             }
         }
-        //convierte la matriz a una fila
-        juego.getMatrizFila();
         //pinta la matriz en forma de fila
         //for (int j=0;j<juego.getMatrizElementos();j++) {System.out.print(juego.getSiguienteElemento());}
         //System.out.println();
-        
         //TEXTO MATRIZ
         //crea el objeto texto.matriz para representar
         Matriz matriz = new Matriz();  
         //pinta la matriz en texto
         //matriz.pintaMatriz(juego.getMatriz());
-        
         //TABLERO
         //crea el objeto tablero.matriz para representar  
         Tablero tablero = new Tablero();
         tablero.pintaTablero(filas,columnas,juego);
     }
-    //void GestionaComandos() {}
 }
     
 
