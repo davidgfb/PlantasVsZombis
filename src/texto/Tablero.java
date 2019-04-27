@@ -1,8 +1,8 @@
 //@author David
 package texto;
-import modelo.*;
+import modelo.Matriz;
 public class Tablero {
-    public void pintaTablero(int filas,int columnas,Juego juego) {
+    public Tablero(int filas, int columnas, Matriz matriz) {
         String espacio=" ";
         String barra="|";
         Boolean lineaImpar = true;
@@ -20,8 +20,8 @@ public class Tablero {
                 caracter=espacio;
                 for (int i=0;i<columnas;i++) {
                     for (int columna=1;columna<8;columna++) {
-                        //aqui introduzco la magia. Si ocupara mas de 1 hueco (x) habria que cambiar el 4 por 4-x
-                        if (columna==4) {caracter=juego.getVectorSiguienteElemento();}
+                        // aqui introduzco la magia. Si ocupara mas de 1 hueco (x) habria que cambiar el 4 por 4-x | el metodo siguiente solo pasa un String 
+                        if (columna==4) {caracter=matriz.getVectorSiguienteElemento();}
                         //imprime elemento Matriz (personaje, etc)
                         System.out.print(caracter);
                         //resetea caracter a espacio
