@@ -6,7 +6,6 @@ public class Matriz {
     int posicionVector=-1;
     void getMatrizAVector() {
         //estas excepciones deberian estar en controlador.Main
-        try {
             vector=new String[getMatrizNumeroElementos()];
             int posicionElementoMatriz=0;
             for (String[] filas : matriz) {
@@ -15,7 +14,7 @@ public class Matriz {
                     posicionElementoMatriz++;
                 }
             }
-        } catch (ArrayIndexOutOfBoundsException excepcion) {System.out.println("Error: fuera del indice de la matriz");}
+        
     }
     public Matriz(int filas, int columnas) {matriz = new String[filas][columnas];}
     public void setElemento(int fila,int columna,String valor) {matriz[fila][columna]=valor;}
