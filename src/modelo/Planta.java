@@ -1,2 +1,4 @@
 package modelo;
-public abstract class Planta {}
+public abstract class Planta {
+    int vidaPlanta;
+}
