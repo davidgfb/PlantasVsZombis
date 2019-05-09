@@ -2,8 +2,12 @@
 package texto;
 import modelo.Matriz;
 public class pintaTablero {
+    
     int turno=0;
-    public pintaTablero(int filas, int columnas, Matriz matriz) { 
+    
+    public pintaTablero(Matriz matriz) { 
+        int filas=matriz.getMatrizNumeroFilas();
+        int columnas=matriz.getMatrizNumeroColumnas();
         turno+=1;
         String barra="|";
         Boolean filaImpar = true;
@@ -31,7 +35,6 @@ public class pintaTablero {
             }
             filaImpar=!filaImpar; //cambia fila impar a par o viceversa
         }
-        System.out.println("Tienes "+soles+" soles y es el turno "+getTurno()+"\n(Teclea ayuda para lista de comandos. <Enter> para terminar el turno.)");
+        System.out.println("Tienes "+soles+" soles y es el turno "+turno+"\n(Teclea ayuda para lista de comandos. <Enter> para terminar el turno.)");
     }
-    int getTurno () {return turno;}
 }

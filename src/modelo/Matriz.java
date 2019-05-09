@@ -1,7 +1,7 @@
 package modelo;
 public class Matriz {
-    public String[][] matriz; //estas variables ocupan espacio fijo en memoria
-    String[] vector;
+    public String[][] matriz=new String[7][7]; 
+    String[] vector;//estas variables ocupan espacio fijo en memoria
     int posicionVector=-1;
     void MatrizAVector() {
         vector=new String[getMatrizNumeroElementos()];
@@ -15,8 +15,8 @@ public class Matriz {
     }
     public Matriz (int filas, int columnas) {matriz = new String[filas][columnas];}
     public void setElemento(int fila,int columna,String valor) {matriz[fila][columna]=valor;}
-    int getMatrizNumeroFilas() {return matriz.length;}
-    int getMatrizNumeroColumnas() {return matriz[0].length;} 
+    public int getMatrizNumeroFilas() {return matriz.length;}
+    public int getMatrizNumeroColumnas() {return matriz[0].length;} 
     int getMatrizNumeroElementos() {return getMatrizNumeroFilas()*getMatrizNumeroColumnas();}
     public String getVectorSiguienteElemento() {
         MatrizAVector();//convierte la matriz a un vector 
