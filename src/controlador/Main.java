@@ -6,7 +6,7 @@ import modelo.Matriz;
 import texto.pintaTablero;
 public class Main {
     static String dificultad;
-    static Matriz matriz= new Matriz(7,7);
+    
     static pintaTablero tablero; 
     static boolean partidaCreada = false;
     
@@ -17,10 +17,14 @@ public class Main {
         String[] comandosPedidos = comandosLinea.split(" ");
         main(comandosPedidos);
     }
+    
     static void creaPartida(int filas,int columnas,String dificultad) {
         //crea el objeto tablero.matriz para representar
-        capturaComandos();
+        //capturaComandos();
+        Matriz matriz= new Matriz(filas,columnas);
+        pintaTablero tablero = new pintaTablero(matriz);
     }
+    
     void rellenaMatriz () {
         /*int numero0_9=0; //cambia todos los elementos null de la matriz por numeros 0-9
         for (int fila=0;fila<filas;fila++) {
@@ -32,6 +36,7 @@ public class Main {
             }
         } //Le esta pasando el objeto matriz */
     }
+    
     static String getExpresionValida(String expresion) {
         String[] EXPRESIONESVALIDAS={"N","G","L","S","","ayuda"};
         String argumentoValidoEncontrado=null;
@@ -40,10 +45,12 @@ public class Main {
         }
         return argumentoValidoEncontrado;
     }
+    
     static int getEnteroValido(String expresion) {
         int entero=Integer.parseInt(expresion); //convierto expresion a entero //comprueba q expresion sea un entero
         return entero;
     }
+    
     static String getDificultadValida(String expresion) {
         String[] NIVELESDIFICULTAD = {"BAJA","MEDIA","ALTA","IMPOSIBLE"};
         String dificultadEncontrada=null;
@@ -52,7 +59,12 @@ public class Main {
         }
         return dificultadEncontrada;
     }
-    static void sal() {System.out.println("Metodo sal aun no implementado");}
+    
+    static void sal() {
+        //System.out.println("Metodo sal aun no implementado");
+        System.out.println("Gracias por jugar");
+    }
+    
     static void plantaGirasol() {
         if (!partidaCreada) {
             System.out.println("aun no ha iniciado la partida");
@@ -61,6 +73,7 @@ public class Main {
         else {System.out.println("Metodo plantaGirasol aun no implementado");}
         //Girasol girasol = new Girasol();
     }
+    
     static void plantaLanzaGuisantes() {
         if (!partidaCreada) {
             System.out.println("aun no ha iniciado la partida");
@@ -68,13 +81,16 @@ public class Main {
         } 
         else {System.out.println("Metodo plantaLanzaGuisantes aun no implementado");}
     }
+    
     static void ayuda() {
-        System.out.println("Metodo ayuda aun no implementado");
+        //System.out.println("Metodo ayuda aun no implementado");
+        System.out.println("Lista de comandos:\n____________________________________________________________\nN <filas> <columnas> <Dificultad>: Nueva partida (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE\nG <fila> <columna>: colocar girasol.\nL <fila> <columna>: colocar LanzaGuisantes\n\nÚnicamente se podrá añadir un nueva planta de cada tipo por turno y si tiene el número suficiente de soles. No podrá añadir nuecvas plantas en una casilla ocupada por otra planta o por un zombie\nS: Salir de la aplicación.\nEnter pasar de turno \nayuda: este comando solicita a la aplicación que muestre la ayuda sobre cómo utilizar los comandos.");
         capturaComandos();
     }
+    
     static void pasaTurno() {
         System.out.println("Metodo pasaTurno aun no implementado");
-        tablero=new pintaTablero(matriz);
+        
         capturaComandos();
     }
     
@@ -105,5 +121,8 @@ public class Main {
         }
     }
 }
+    
+
+
     
 

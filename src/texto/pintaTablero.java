@@ -1,9 +1,17 @@
 //@author David
 package texto;
 import modelo.Matriz;
+
 public class pintaTablero {
+    int turno;
     
-    int turno=0;
+    public void setOcupado(String letra, int ocupado){
+        if(letra.equals("l") || letra.equals("g") && ocupado == 0) { 
+            ocupado = 1;        
+        } else if (ocupado == 1) {
+            System.out.println("Error de juego: posición ocupada");
+        }   
+    }
     
     public pintaTablero(Matriz matriz) { 
         int filas=matriz.getMatrizNumeroFilas();
@@ -36,5 +44,10 @@ public class pintaTablero {
             filaImpar=!filaImpar; //cambia fila impar a par o viceversa
         }
         System.out.println("Tienes "+soles+" soles y es el turno "+turno+"\n(Teclea ayuda para lista de comandos. <Enter> para terminar el turno.)");
+    }
+    
+    public void setPlanta(int fila, int columna,String[][] matriz,String planta){
+        matriz[fila][columna]=planta;
+        //pintaTablero(matriz);
     }
 }
