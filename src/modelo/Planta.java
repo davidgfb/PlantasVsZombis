@@ -1,21 +1,40 @@
 package modelo;
+import controlador.Main;
 
 public abstract class Planta {
-    int soles, frecuencia,vida,danno,tipo,graficos,estado = 0;
+    static public int frecuencia,vida,danno,tipo,graficos,estado = 0;
     boolean ataca;
 
-    public Planta(int vida, int danno, int frecuencia, String tipo, String graficos,int soles) {this.soles = soles;}
+    public Planta(int fila,int columna,String planta) {
+        Matriz.setElemento(fila,columna,planta);
+    }
     
     // Setters
     public void reseteaEstado() {this.estado = 0;}
+    
     public void incrementaEstado(){this.estado++;}
+    
     public void reseteaTiempoCarga() {this.frecuencia = 0;}
+    
     public void incrementaTiempoCarga(){this.frecuencia++;}
 
     // Getters
-    public int getSoles() {return this.soles;}
+    
+    
     public int getEstado() {return this.estado;}
-    public boolean Compra(int soles) {return this.estado == this.soles || soles >= this.soles;}
+    
+    //public boolean Compra(int soles) {return this.estado == this.soles || soles >= this.soles;}
+    
+    public static void planta(String planta,int fila,int columna) {
+        if (!Main.partidaCreada) {System.out.println("aun no ha iniciado la partida");} 
+        else {
+            if (!Matriz.getOcupado(fila, columna, planta)) { 
+                if (planta.equalsIgnoreCase("girasol")) {Planta girasol = new Girasol(fila,columna);} 
+                else {Planta lanzaGuisantes = new Lanzaguisantes(fila,columna);}
+                Main.tablero.pintaTablero();
+            } else {System.out.println("Casilla ocupada: por favor escoja otra");}
+        }
+    }
 
     // Threading
     //@Override

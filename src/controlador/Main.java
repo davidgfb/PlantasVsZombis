@@ -3,38 +3,30 @@
 package controlador;
 import java.util.Scanner;
 import modelo.Matriz;
-import texto.pintaTablero;
+import modelo.Planta;
+import texto.Tablero;
+
 public class Main {
-    static String dificultad;
-    
-    static pintaTablero tablero; 
-    static boolean partidaCreada = false;
+    public static boolean partidaCreada = false, turno=true;
+    public static Matriz matriz;
+    public static Tablero tablero;
     
     static void capturaComandos() {
-        Scanner escaner = new Scanner(System.in);
-        System.out.print("Introduzca comandos: ");
-        String comandosLinea = escaner.nextLine();
-        String[] comandosPedidos = comandosLinea.split(" ");
-        main(comandosPedidos);
+        while (turno) {
+            Scanner escaner = new Scanner(System.in);
+            System.out.print("Introduzca comandos: ");
+            String comandosLinea = escaner.nextLine();
+            String[] comandosPedidos = comandosLinea.split(" ");
+            main(comandosPedidos);
+        }
     }
     
     static void creaPartida(int filas,int columnas,String dificultad) {
         //crea el objeto tablero.matriz para representar
         //capturaComandos();
-        Matriz matriz= new Matriz(filas,columnas);
-        pintaTablero tablero = new pintaTablero(matriz);
-    }
-    
-    void rellenaMatriz () {
-        /*int numero0_9=0; //cambia todos los elementos null de la matriz por numeros 0-9
-        for (int fila=0;fila<filas;fila++) {
-            for (int columna=0;columna<columnas;columna++) {
-              if (numero0_9>9) {numero0_9=0;}//reseteo numero 0-9
-              String cadena=Integer.toString(numero0_9);//convierto el numero a String para representar
-              matriz.setElemento(fila,columna,cadena);
-              numero0_9++;
-            }
-        } //Le esta pasando el objeto matriz */
+        partidaCreada=true;
+        matriz = new Matriz(filas,columnas);
+        tablero = new Tablero();
     }
     
     static String getExpresionValida(String expresion) {
@@ -61,37 +53,14 @@ public class Main {
     }
     
     static void sal() {
-        //System.out.println("Metodo sal aun no implementado");
+        turno=false;
         System.out.println("Gracias por jugar");
     }
     
-    static void plantaGirasol() {
-        if (!partidaCreada) {
-            System.out.println("aun no ha iniciado la partida");
-            capturaComandos();
-        } 
-        else {System.out.println("Metodo plantaGirasol aun no implementado");}
-        //Girasol girasol = new Girasol();
-    }
-    
-    static void plantaLanzaGuisantes() {
-        if (!partidaCreada) {
-            System.out.println("aun no ha iniciado la partida");
-            capturaComandos();
-        } 
-        else {System.out.println("Metodo plantaLanzaGuisantes aun no implementado");}
-    }
-    
-    static void ayuda() {
-        //System.out.println("Metodo ayuda aun no implementado");
-        System.out.println("Lista de comandos:\n____________________________________________________________\nN <filas> <columnas> <Dificultad>: Nueva partida (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE\nG <fila> <columna>: colocar girasol.\nL <fila> <columna>: colocar LanzaGuisantes\n\nÚnicamente se podrá añadir un nueva planta de cada tipo por turno y si tiene el número suficiente de soles. No podrá añadir nuecvas plantas en una casilla ocupada por otra planta o por un zombie\nS: Salir de la aplicación.\nEnter pasar de turno \nayuda: este comando solicita a la aplicación que muestre la ayuda sobre cómo utilizar los comandos.");
-        capturaComandos();
-    }
+    static void ayuda() {System.out.println("Lista de comandos:\n____________________________________________________________\nN <filas> <columnas> <Dificultad>: Nueva partida (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE\nG <fila> <columna>: colocar girasol.\nL <fila> <columna>: colocar LanzaGuisantes\n\nÚnicamente se podrá añadir un nueva planta de cada tipo por turno y si tiene el número suficiente de soles. No podrá añadir nuecvas plantas en una casilla ocupada por otra planta o por un zombie\nS: Salir de la aplicación.\nEnter pasar de turno \nayuda: este comando solicita a la aplicación que muestre la ayuda sobre cómo utilizar los comandos.");}
     
     static void pasaTurno() {
-        System.out.println("Metodo pasaTurno aun no implementado");
-        
-        capturaComandos();
+        tablero.pintaTablero();
     }
     
     public static void main (String[] argumentos) {
@@ -104,8 +73,8 @@ public class Main {
             if (argumentos.length==3) {
                 int filas= getEnteroValido(argumentos[1]);
                 int columnas= getEnteroValido(argumentos[2]);
-                if (letra.equalsIgnoreCase("g")) {plantaGirasol();}
-                else if (letra.equalsIgnoreCase("l")) {plantaLanzaGuisantes();}
+                if (letra.equalsIgnoreCase("g")) {Planta.planta("Girasol",filas,columnas);}
+                else if (letra.equalsIgnoreCase("l")) {Planta.planta("Lanzaguisantes",filas,columnas);}
                 else if (letra.equalsIgnoreCase("n")) {throw new IllegalArgumentException();}
             } 
             if (argumentos.length==4) {
@@ -115,7 +84,7 @@ public class Main {
                 if (dificultad == null) {throw new IllegalArgumentException();} 
                 if (letra.equalsIgnoreCase("n")) {creaPartida(filas,columnas,dificultad);}
             }
-        } catch (IllegalArgumentException|ArrayIndexOutOfBoundsException|NegativeArraySizeException excepcion) {
+        } catch (Exception excepcion) {
             System.out.println("Error: "+excepcion);
             capturaComandos(); 
         }

@@ -1,26 +1,28 @@
 //@author David
 package texto;
 import modelo.Matriz;
+import modelo.Girasol;
+import controlador.Main;
 
-public class pintaTablero {
-    int turno;
+public class Tablero {
+    int turno; 
+
+    public Tablero() {pintaTablero();}
     
-    public void setOcupado(String letra, int ocupado){
-        if(letra.equals("l") || letra.equals("g") && ocupado == 0) { 
-            ocupado = 1;        
-        } else if (ocupado == 1) {
-            System.out.println("Error de juego: posición ocupada");
-        }   
+    public void setPlanta(int fila, int columna,String[][] matriz,String planta){
+        matriz[fila][columna]=planta;
+        //pintaTablero(matriz);
     }
     
-    public pintaTablero(Matriz matriz) { 
+    public void pintaTablero() {
+        Matriz matriz=Main.matriz;
         int filas=matriz.getMatrizNumeroFilas();
         int columnas=matriz.getMatrizNumeroColumnas();
         turno+=1;
         String barra="|";
         Boolean filaImpar = true;
         String caracter=" ";
-        int soles=0;
+        int soles=Girasol.getSoles();
         if (turno==1) {System.out.println("Comenzando la partida.");}
         for (int fila=1;fila<2*filas+2;fila++) {
             System.out.print(barra); //Imprime una barra
@@ -44,10 +46,5 @@ public class pintaTablero {
             filaImpar=!filaImpar; //cambia fila impar a par o viceversa
         }
         System.out.println("Tienes "+soles+" soles y es el turno "+turno+"\n(Teclea ayuda para lista de comandos. <Enter> para terminar el turno.)");
-    }
-    
-    public void setPlanta(int fila, int columna,String[][] matriz,String planta){
-        matriz[fila][columna]=planta;
-        //pintaTablero(matriz);
     }
 }

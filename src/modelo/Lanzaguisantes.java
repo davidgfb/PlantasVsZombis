@@ -8,5 +8,5 @@ public class Lanzaguisantes extends Planta{
     private final static int SOLES = 200;
     private final static String GRAPHICS = "L";
 
-    public Lanzaguisantes() {super(VIDA,DMG,FRECUENCIA,TIPO,GRAPHICS,SOLES);}
+    public Lanzaguisantes(int fila,int columna) {super(fila,columna,"L");}
 }
