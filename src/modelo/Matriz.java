@@ -2,7 +2,7 @@ package modelo;
 
 public class Matriz {
     public static String[][] matriz;
-    String[] vector;//estas variables ocupan espacio fijo en memoria
+    String[] vector; //estas variables ocupan espacio fijo en memoria
     int posicionVector=-1;
     
     void MatrizAVector() {
@@ -27,17 +27,15 @@ public class Matriz {
     int getMatrizNumeroElementos() {return getMatrizNumeroFilas()*getMatrizNumeroColumnas();}
     
     public String getVectorSiguienteElemento() {
-        MatrizAVector();//convierte la matriz a un vector 
+        MatrizAVector(); //convierte la matriz a un vector 
         posicionVector++;
         if (posicionVector==getMatrizNumeroElementos()) {posicionVector=0;}
         return vector[posicionVector];
     }
     
     static public boolean getOcupado(int fila, int columna, String personaje){
-        fila-=1;
-        columna-=1;
         boolean ocupado=false;
-        String casilla=matriz[fila][columna];
+        String casilla=matriz[fila-1][columna-1];
         if(casilla!=null) {ocupado = true;}
         return ocupado;
     }   

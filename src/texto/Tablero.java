@@ -7,22 +7,14 @@ import controlador.Main;
 public class Tablero {
     int turno; 
 
-    public Tablero() {pintaTablero();}
+    public void setPlanta(int fila, int columna,String[][] matriz,String planta){matriz[fila][columna]=planta;}
     
-    public void setPlanta(int fila, int columna,String[][] matriz,String planta){
-        matriz[fila][columna]=planta;
-        //pintaTablero(matriz);
-    }
-    
-    public void pintaTablero() {
+    public void Tablero() {
         Matriz matriz=Main.matriz;
-        int filas=matriz.getMatrizNumeroFilas();
-        int columnas=matriz.getMatrizNumeroColumnas();
+        int filas=matriz.getMatrizNumeroFilas(), columnas=matriz.getMatrizNumeroColumnas(), soles=Girasol.getSoles();
+        String caracter,barra="|";
+        boolean filaImpar = true;
         turno+=1;
-        String barra="|";
-        Boolean filaImpar = true;
-        String caracter=" ";
-        int soles=Girasol.getSoles();
         if (turno==1) {System.out.println("Comenzando la partida.");}
         for (int fila=1;fila<2*filas+2;fila++) {
             System.out.print(barra); //Imprime una barra

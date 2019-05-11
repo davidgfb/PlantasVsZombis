@@ -2,19 +2,21 @@
 
 package controlador;
 import java.util.Scanner;
+import modelo.Girasol;
 import modelo.Matriz;
 import modelo.Planta;
 import texto.Tablero;
 
 public class Main {
-    public static boolean partidaCreada = false, turno=true;
+    public static int partidasCreadas = 0; 
+    public static boolean turno=true;
     public static Matriz matriz;
     public static Tablero tablero;
     
     static void capturaComandos() {
         while (turno) {
             Scanner escaner = new Scanner(System.in);
-            System.out.print("Introduzca comandos: ");
+            System.out.println("Introduzca comandos: ");
             String comandosLinea = escaner.nextLine();
             String[] comandosPedidos = comandosLinea.split(" ");
             main(comandosPedidos);
@@ -22,15 +24,16 @@ public class Main {
     }
     
     static void creaPartida(int filas,int columnas,String dificultad) {
-        //crea el objeto tablero.matriz para representar
-        //capturaComandos();
-        partidaCreada=true;
-        matriz = new Matriz(filas,columnas);
-        tablero = new Tablero();
+            partidasCreadas++;
+            matriz = new Matriz(filas,columnas); //crea el objeto tablero.matriz para representar
+            tablero = new Tablero();
+            Girasol.reseteaAtributos();
     }
     
-    static String getExpresionValida(String expresion) {
-        String[] EXPRESIONESVALIDAS={"N","G","L","S","","ayuda"};
+    static String getExpresionValida(String expresion,int tipo) {
+        String[] EXPRESIONESVALIDAS=new String[6];
+        if (tipo==0) {EXPRESIONESVALIDAS = new String[] {"N","G","L","S","","ayuda"};}
+        else if (tipo==3) {EXPRESIONESVALIDAS= new String[] {"BAJA","MEDIA","ALTA","IMPOSIBLE","BAJA","MEDIA"};}
         String argumentoValidoEncontrado=null;
         for (String argumentoValido : EXPRESIONESVALIDAS) { //traduce el primer argumento a uno de la lista (minusculas-->mayusculas)
             if (expresion.equalsIgnoreCase(argumentoValido)) {argumentoValidoEncontrado=argumentoValido;}
@@ -43,15 +46,6 @@ public class Main {
         return entero;
     }
     
-    static String getDificultadValida(String expresion) {
-        String[] NIVELESDIFICULTAD = {"BAJA","MEDIA","ALTA","IMPOSIBLE"};
-        String dificultadEncontrada=null;
-        for (String nivelDificultad : NIVELESDIFICULTAD) { //traduce el primer argumento a uno de la lista (minusculas-->mayusculas)
-            if (expresion.equalsIgnoreCase(nivelDificultad)) {dificultadEncontrada=nivelDificultad;}
-        }
-        return dificultadEncontrada;
-    }
-    
     static void sal() {
         turno=false;
         System.out.println("Gracias por jugar");
@@ -59,13 +53,11 @@ public class Main {
     
     static void ayuda() {System.out.println("Lista de comandos:\n____________________________________________________________\nN <filas> <columnas> <Dificultad>: Nueva partida (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE\nG <fila> <columna>: colocar girasol.\nL <fila> <columna>: colocar LanzaGuisantes\n\nÚnicamente se podrá añadir un nueva planta de cada tipo por turno y si tiene el número suficiente de soles. No podrá añadir nuecvas plantas en una casilla ocupada por otra planta o por un zombie\nS: Salir de la aplicación.\nEnter pasar de turno \nayuda: este comando solicita a la aplicación que muestre la ayuda sobre cómo utilizar los comandos.");}
     
-    static void pasaTurno() {
-        tablero.pintaTablero();
-    }
+    static void pasaTurno() {tablero.Tablero();}
     
     public static void main (String[] argumentos) {
         try { //el usuario al menos debe introducir el primer argumento 
-            String letra=getExpresionValida(argumentos[0]);
+            String letra=getExpresionValida(argumentos[0],0);
             if (letra == null) {throw new IllegalArgumentException();}
             if (letra.equalsIgnoreCase("")) {pasaTurno();} //Pulsa Enter
             if (letra.equalsIgnoreCase("ayuda")) {ayuda();} 
@@ -80,7 +72,7 @@ public class Main {
             if (argumentos.length==4) {
                 int filas= getEnteroValido(argumentos[1]);
                 int columnas= getEnteroValido(argumentos[2]);
-                String dificultad=getDificultadValida(argumentos[3]);
+                String dificultad=getExpresionValida(argumentos[3],3);
                 if (dificultad == null) {throw new IllegalArgumentException();} 
                 if (letra.equalsIgnoreCase("n")) {creaPartida(filas,columnas,dificultad);}
             }

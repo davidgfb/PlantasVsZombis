@@ -1,2 +1,5 @@
 package modelo;
-public class Personaje {}
+public class Personaje {
+    
+    public Personaje() {}
+}
