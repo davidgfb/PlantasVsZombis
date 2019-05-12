@@ -1,7 +1,8 @@
 package modelo;
 
 public class Girasol extends Planta {
-    static int soles = 0, cantidad=0;
+    static int vida = 1,DANNO = 0,FRECUENCIA = 2,soles = 0,cantidad= 0, coste = 20;
+    String TIPO = "Girasol",GRAFICOS = "G";
 
     public Girasol(int fila,int columna) {
         super(fila,columna,"G");

@@ -39,6 +39,20 @@ public class Matriz {
         if(casilla!=null) {ocupado = true;}
         return ocupado;
     }   
+    
+    public void Ataca(String objeto, int filas, int columnas){
+        if (objeto.equals("Z")) {
+            for (int fila = filas; fila>0; fila--) {
+                matriz[fila][columnas] = objeto; 
+                matriz[fila-1][columnas] = null; //-1? null?
+            }
+        }
+        if (objeto.equals("L")) {
+            for (int fila = filas; fila>0; fila--) {
+                matriz[fila+1][columnas] = Lanzaguisantes.sprite; //if() escribir que si posicion zombie igual posicion sprite --> zombie vida - 1
+            }
+        }
+    }
 }    
     
 
