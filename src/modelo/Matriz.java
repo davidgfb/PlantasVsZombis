@@ -20,9 +20,9 @@ public class Matriz {
     
     public static void setElemento(int fila,int columna,String valor) {matriz[fila-1][columna-1]=valor;}
     
-    public int getMatrizNumeroFilas() {return matriz.length;}
+    static public int getMatrizNumeroFilas() {return matriz.length;}
     
-    public int getMatrizNumeroColumnas() {return matriz[0].length;} 
+    static public int getMatrizNumeroColumnas() {return matriz[0].length;} 
     
     int getMatrizNumeroElementos() {return getMatrizNumeroFilas()*getMatrizNumeroColumnas();}
     
@@ -33,7 +33,7 @@ public class Matriz {
         return vector[posicionVector];
     }
     
-    static public boolean getOcupado(int fila, int columna, String personaje){
+    static public boolean getOcupado(int fila, int columna){
         boolean ocupado=false;
         String casilla=matriz[fila-1][columna-1];
         if(casilla!=null) {ocupado = true;}

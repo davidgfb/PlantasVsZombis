@@ -2,32 +2,40 @@
 
 package controlador;
 import java.util.Scanner;
-import modelo.Girasol;
 import modelo.Matriz;
 import modelo.Planta;
 import texto.Tablero;
+import modelo.Juego;
+import modelo.Zombi;
 
 public class Main {
     public static int partidasCreadas = 0; 
-    public static boolean turno=true;
+    public static boolean noTerminada=true;
     public static Matriz matriz;
     public static Tablero tablero;
+    public static Juego juego;
     
     static void capturaComandos() {
-        while (turno) {
+        while (noTerminada) {
             Scanner escaner = new Scanner(System.in);
             System.out.println("Introduzca comandos: ");
             String comandosLinea = escaner.nextLine();
             String[] comandosPedidos = comandosLinea.split(" ");
             main(comandosPedidos);
+            generaZombis();
+            Zombi.eligeGanador();
         }
     }
     
-    static void creaPartida(int filas,int columnas,String dificultad) {
-            partidasCreadas++;
-            matriz = new Matriz(filas,columnas); //crea el objeto tablero.matriz para representar
-            tablero = new Tablero();
-            Girasol.reseteaAtributos();
+    static void generaZombis() {
+        if (Juego.turno>=Juego.turnosInicialesSinZombis) {new Zombi();}
+    }
+    
+    static void creaPartida(int filas,int columnas, String dificultad) {
+        partidasCreadas++;
+        matriz = new Matriz(filas,columnas); //crea el objeto tablero.matriz para representar
+        tablero = new Tablero();
+        juego = new Juego(dificultad);
     }
     
     static String getExpresionValida(String expresion,int tipo) {
@@ -47,7 +55,7 @@ public class Main {
     }
     
     static void sal() {
-        turno=false;
+        noTerminada=false;
         System.out.println("Gracias por jugar");
     }
     
@@ -74,7 +82,10 @@ public class Main {
                 int columnas= getEnteroValido(argumentos[2]);
                 String dificultad=getExpresionValida(argumentos[3],3);
                 if (dificultad == null) {throw new IllegalArgumentException();} 
-                if (letra.equalsIgnoreCase("n")) {creaPartida(filas,columnas,dificultad);}
+                if (letra.equalsIgnoreCase("n")) {
+                    if (filas*columnas<=0) {throw new IllegalArgumentException();}
+                    creaPartida(filas,columnas,dificultad);
+                }
             }
         } catch (Exception excepcion) {
             System.out.println("Error: "+excepcion);

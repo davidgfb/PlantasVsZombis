@@ -4,7 +4,7 @@ import controlador.Main;
 public abstract class Planta extends Personaje {
     public static Girasol[] girasoles;
     public static Lanzaguisantes[] grupoLanzaguisantes;
-    static public int frecuencia,vida,danno,coste,soles,tipo,graficos,estado = 0; //añadido soles y coste 
+    static public int frecuencia,vida,danno,coste,soles,tipo,graficos,estado = 0; //añade soles y coste 
     boolean ataca;
 
     public Planta(int fila,int columna,String planta) {
@@ -33,7 +33,7 @@ public abstract class Planta extends Personaje {
     public static void planta(String planta,int fila,int columna) {
         if (Main.partidasCreadas==0) {System.out.println("Aún no ha iniciado la partida");} 
         else {
-            if (!Matriz.getOcupado(fila, columna, planta)) { 
+            if (!Matriz.getOcupado(fila, columna)) { 
                 if (planta.equalsIgnoreCase("girasol")) {
                     Girasol girasol = new Girasol(fila,columna);
                     girasoles[Girasol.cantidad]=girasol;

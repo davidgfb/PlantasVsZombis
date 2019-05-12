@@ -1,11 +1,23 @@
 package modelo;
+import controlador.Main;
+import java.util.Random;
 
-public abstract class Zombi {
-    int velocidad,vida;
+public class Zombi extends Personaje {
+    static int fila=new Random().nextInt(Matriz.getMatrizNumeroFilas())+1;
+    static int columna=Matriz.getMatrizNumeroColumnas();
+    boolean avanza=false, puedeAvanzar=true;
     
-    public Zombi(int vida, int dmg, int vel_attck, String tipo, String graphics, int velocidad) {this.velocidad = velocidad;}
+    public Zombi() {super(generaFilaValida(),columna,"Z(5)");}
     
-    public void mueve(int filas, int columnas) {
-	for(int fila = filas; fila>0; fila++){}
+    static public void eligeGanador() { //si hay columna a su izquierda
+        if (columna-1<=0) {
+            System.out.println("Zombis ganan!");
+            Main.noTerminada=false;
+        }
     }
+    
+    static int generaFilaValida() {
+        while (Matriz.getOcupado(fila,columna)) {fila=new Random().nextInt(Matriz.getMatrizNumeroFilas())+1;}
+        return fila; 
+    } 
 }
