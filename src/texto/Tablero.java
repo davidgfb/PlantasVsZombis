@@ -5,14 +5,12 @@ import modelo.Girasol;
 import controlador.Main;
 
 public class Tablero {
-    int turno; 
+    static public int turno;
 
-    public void setPlanta(int fila, int columna,String[][] matriz,String planta){matriz[fila][columna]=planta;}
-    
     public void Tablero() {
         Matriz matriz=Main.matriz;
         int filas=matriz.getMatrizNumeroFilas(), columnas=matriz.getMatrizNumeroColumnas(), soles=Girasol.getSoles();
-        String caracter,barra="|";
+        String caracter,barra="|",espacio=" ";
         boolean filaImpar = true;
         turno+=1;
         if (turno==1) {System.out.println("Comenzando la partida.");}
@@ -23,14 +21,10 @@ public class Tablero {
                 System.out.println(barra); //imprime barra
             } else {
                 for (int columna=0;columna<columnas;columna++) {
-                    for (int hueco=1;hueco<8;hueco++) {// necesita de modelo.Matriz | Si ocupara mas de 1 hueco (x) habria que cambiar el 4 por 4-x 
-                        if (hueco==4) {
-                            caracter=matriz.getVectorSiguienteElemento();
-                            if (caracter==null) {caracter=" ";}
-                        } 
-                        else {caracter=" ";}//imprime elemento Matriz (personaje, etc)
-                        System.out.print(caracter); 
-                    }
+                    caracter=matriz.getVectorSiguienteElemento();
+                    if (caracter==null) {caracter="       ";}
+                    else {caracter=caracter+"   ";}
+                    System.out.print(caracter); 
                     System.out.print(barra); //imprime barra
                 }
                 System.out.println(); //baja a la siguiente fila  

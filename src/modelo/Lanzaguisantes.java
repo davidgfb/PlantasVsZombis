@@ -10,5 +10,5 @@ public class Lanzaguisantes extends Planta{
     static String sprite = "---";
     static int cantidad=0;
     
-    public Lanzaguisantes(int fila,int columna) {super(fila,columna,"L");}
+    public Lanzaguisantes(int fila,int columna) {super(fila,columna,"L(3)");}
 }

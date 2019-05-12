@@ -5,7 +5,7 @@ public class Girasol extends Planta {
     String TIPO = "Girasol",GRAFICOS = "G";
 
     public Girasol(int fila,int columna) {
-        super(fila,columna,"G");
+        super(fila,columna,"G(1)");
         cantidad+=1;
     }
     
