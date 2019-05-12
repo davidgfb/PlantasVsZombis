@@ -20,6 +20,4 @@ public class Zombi extends Personaje {
     }
     
     public Zombi() {super(generaFilaValida(),columna,"Z(5)");}
-    
-    
 }

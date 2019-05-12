@@ -2,6 +2,7 @@
 
 package controlador;
 import java.util.Scanner;
+import modelo.Girasol;
 import modelo.Matriz;
 import modelo.Planta;
 import texto.Tablero;
@@ -36,6 +37,7 @@ public class Main {
         matriz = new Matriz(filas,columnas); //crea el objeto tablero.matriz para representar
         tablero = new Tablero();
         juego = new Juego(dificultad);
+        Girasol.reiniciaAtributos();
     }
     
     static String getExpresionValida(String expresion,int tipo) {
