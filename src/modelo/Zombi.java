@@ -7,7 +7,10 @@ public class Zombi extends Personaje {
     static int columna=Matriz.getMatrizNumeroColumnas();
     boolean avanza=false, puedeAvanzar=true;
     
-    public Zombi() {super(generaFilaValida(),columna,"Z(5)");}
+    static int generaFilaValida() {
+        while (Matriz.getOcupado(fila,columna)) {fila=new Random().nextInt(Matriz.getMatrizNumeroFilas())+1;}
+        return fila; 
+    } 
     
     static public void eligeGanador() { //si hay columna a su izquierda
         if (columna-1<=0) {
@@ -16,8 +19,7 @@ public class Zombi extends Personaje {
         }
     }
     
-    static int generaFilaValida() {
-        while (Matriz.getOcupado(fila,columna)) {fila=new Random().nextInt(Matriz.getMatrizNumeroFilas())+1;}
-        return fila; 
-    } 
+    public Zombi() {super(generaFilaValida(),columna,"Z(5)");}
+    
+    
 }
