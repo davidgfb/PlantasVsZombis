@@ -23,9 +23,14 @@ public class Main {
             String comandosLinea = escaner.nextLine();
             String[] comandosPedidos = comandosLinea.split(" ");
             main(comandosPedidos);
-            generaZombis();
-            Zombi.eligeGanador();
+            Actualiza();
         }
+    }
+    
+    static void Actualiza() {
+        generaZombis();
+        Zombi.eligeGanador();
+        Zombi.avanza();
     }
     
     static void generaZombis() {

@@ -15,7 +15,7 @@ public class Girasol extends Planta {
     
     static public int getSoles() {
         soles+=cantidad;
-        return soles;
+        return soles+50;
     }
 }
 

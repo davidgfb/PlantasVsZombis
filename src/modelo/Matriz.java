@@ -2,7 +2,7 @@ package modelo;
 
 public class Matriz {
     public static String[][] matriz;
-    String[] vector; //estas variables ocupan espacio fijo en memoria
+    static String[] vector; //estas variables ocupan espacio fijo en memoria
     int posicionVector=-1;
     
     void MatrizAVector() {

@@ -4,9 +4,10 @@ import controlador.Main;
 public abstract class Planta extends Personaje {
     public static Girasol[] girasoles;
     public static Lanzaguisantes[] grupoLanzaguisantes;
-    static public int frecuencia,vida,danno,coste,soles,tipo,graficos,estado = 0; //añade soles y coste 
+    static public int frecuencia,vida,danno,coste,soles,graficos,estado = 0; //añade soles y coste 
     boolean ataca;
-
+    static public String tipo;
+    
     public Planta(int fila,int columna,String planta) {
         super(fila,columna,planta);
         this.coste = 50;
@@ -20,9 +21,13 @@ public abstract class Planta extends Personaje {
     
     public void incrementaTiempoCarga(){this.frecuencia++;}
     
-    public void getCoste(String tipo){ //proceso para restar coste al numero de soles en posesión 
-        if(tipo.equals("L")){soles = soles - Lanzaguisantes.coste;} 
-        else {soles = soles - Girasol.coste;}
+    public void getCoste(String objeto){ //proceso para restar coste al numero de soles en posesión 
+        if(objeto.equals("L")){
+            tipo = "L";
+            soles = soles - Lanzaguisantes.coste;} 
+        else {
+            tipo = "G";
+            soles = soles - Girasol.coste;}
     }
     
     public int getEstado() {

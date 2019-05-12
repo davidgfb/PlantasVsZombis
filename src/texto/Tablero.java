@@ -6,10 +6,14 @@ import controlador.Main;
 import modelo.Juego;
 
 public class Tablero {
+    int columnas;
+    String caracter;    
+    Matriz matriz;    
     public void Tablero() {
-        Matriz matriz=Main.matriz;
-        int filas=matriz.getMatrizNumeroFilas(), columnas=matriz.getMatrizNumeroColumnas(), soles=Girasol.getSoles();
-        String caracter,barra="|",espacio=" ";
+        matriz=Main.matriz;
+        int filas=matriz.getMatrizNumeroFilas(), soles=Girasol.getSoles();
+        columnas=matriz.getMatrizNumeroColumnas();
+        String barra="|",espacio=" ";
         boolean filaImpar = true;
         Juego.turno+=1;
         if (Juego.turno==1) {System.out.println("Comenzando la partida.");}
@@ -33,3 +37,4 @@ public class Tablero {
         System.out.println("Tienes "+soles+" soles y es el turno "+Juego.turno+"\n(Teclea ayuda para lista de comandos. <Enter> para terminar el turno.)");
     }
 }
+
