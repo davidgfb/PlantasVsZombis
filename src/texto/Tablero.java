@@ -2,18 +2,12 @@
 package texto;
 import modelo.Matriz;
 import modelo.Girasol;
-import controlador.Main;
 import modelo.Juego;
 
 public class Tablero {
-    int columnas;
-    String caracter;    
-    Matriz matriz;    
-    public void Tablero() {
-        matriz=Main.matriz;
-        int filas=matriz.getMatrizNumeroFilas(), soles=Girasol.getSoles();
-        columnas=matriz.getMatrizNumeroColumnas();
-        String barra="|",espacio=" ";
+    static public void Tablero() {
+        int filas = Matriz.getMatrizNumeroFilas(), soles = Girasol.getSoles(), columnas = Matriz.getMatrizNumeroColumnas();
+        String barra = "|", caracter;
         boolean filaImpar = true;
         Juego.turno+=1;
         if (Juego.turno==1) {System.out.println("Comenzando la partida.");}
@@ -24,7 +18,7 @@ public class Tablero {
                 System.out.println(barra); //imprime barra
             } else {
                 for (int columna=0;columna<columnas;columna++) {
-                    caracter=matriz.getVectorSiguienteElemento();
+                    caracter=Matriz.getVectorSiguienteElemento();
                     if (caracter==null) {caracter="       ";}
                     else {caracter=caracter+"   ";}
                     System.out.print(caracter); 
@@ -35,6 +29,6 @@ public class Tablero {
             filaImpar=!filaImpar; //cambia fila impar a par o viceversa
         }
         System.out.println("Tienes "+soles+" soles y es el turno "+Juego.turno+"\n(Teclea ayuda para lista de comandos. <Enter> para terminar el turno.)");
-    }
+    }   
 }
 

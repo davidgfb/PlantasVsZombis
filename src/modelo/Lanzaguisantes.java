@@ -9,6 +9,16 @@ public class Lanzaguisantes extends Planta{
     private final static String GRAPHICS = "L";
     static String sprite = "---";
     static int cantidad=0;
+    public static int F, C; //fila y columna
     
-    public Lanzaguisantes(int fila,int columna) {super(fila,columna,"L(3)");}
+    public Lanzaguisantes(int fila,int columna) {
+        super(fila,columna,"L(3)");
+        F = fila; C = columna; 
+    }
+    
+    public void Ataca() {
+        int i = Lanzaguisantes.F; 
+        
+        for(int j= Lanzaguisantes.C ; j <3; j++){Matriz.matriz[i][j] = sprite;} 
+    }
 }

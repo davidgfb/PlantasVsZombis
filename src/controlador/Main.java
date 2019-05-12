@@ -2,47 +2,20 @@
 
 package controlador;
 import java.util.Scanner;
-import modelo.Girasol;
-import modelo.Matriz;
 import modelo.Planta;
 import texto.Tablero;
 import modelo.Juego;
 import modelo.Zombi;
 
 public class Main {
-    public static int partidasCreadas = 0; 
-    public static boolean noTerminada=true;
-    public static Matriz matriz;
-    public static Tablero tablero;
     public static Juego juego;
     
     static void capturaComandos() {
-        while (noTerminada) {
-            Scanner escaner = new Scanner(System.in);
-            System.out.println("Introduzca comandos: ");
-            String comandosLinea = escaner.nextLine();
-            String[] comandosPedidos = comandosLinea.split(" ");
-            main(comandosPedidos);
-            Actualiza();
-        }
-    }
-    
-    static void Actualiza() {
-        generaZombis();
-        Zombi.eligeGanador();
-        Zombi.avanza();
-    }
-    
-    static void generaZombis() {
-        if (Juego.turno>=Juego.turnosInicialesSinZombis) {new Zombi();}
-    }
-    
-    static void creaPartida(int filas,int columnas, String dificultad) {
-        partidasCreadas++;
-        matriz = new Matriz(filas,columnas); //crea el objeto tablero.matriz para representar
-        tablero = new Tablero();
-        juego = new Juego(dificultad);
-        Girasol.reiniciaAtributos();
+        Scanner escaner = new Scanner(System.in);
+        System.out.println("Introduzca comandos: ");
+        String comandosLinea = escaner.nextLine();
+        String[] comandosPedidos = comandosLinea.split(" ");
+        main(comandosPedidos);
     }
     
     static String getExpresionValida(String expresion,int tipo) {
@@ -62,19 +35,27 @@ public class Main {
     }
     
     static void sal() {
-        noTerminada=false;
+        Juego.noTerminada=false;
         System.out.println("Gracias por jugar");
     }
     
     static void ayuda() {System.out.println("Lista de comandos:\n____________________________________________________________\nN <filas> <columnas> <Dificultad>: Nueva partida (Dificultad: BAJA, MEDIA, ALTA, IMPOSIBLE\nG <fila> <columna>: colocar girasol.\nL <fila> <columna>: colocar LanzaGuisantes\n\nÚnicamente se podrá añadir un nueva planta de cada tipo por turno y si tiene el número suficiente de soles. No podrá añadir nuecvas plantas en una casilla ocupada por otra planta o por un zombie\nS: Salir de la aplicación.\nEnter pasar de turno \nayuda: este comando solicita a la aplicación que muestre la ayuda sobre cómo utilizar los comandos.");}
-    
-    static void pasaTurno() {tablero.Tablero();}
+        
+    static void actualiza() {
+        while (Juego.noTerminada) {
+            capturaComandos();
+            
+            if (Juego.turno>=Juego.turnosInicialesSinZombis) {
+                Zombi.generaZombis();
+            }
+        }   
+    }
     
     public static void main (String[] argumentos) {
         try { //el usuario al menos debe introducir el primer argumento 
             String letra=getExpresionValida(argumentos[0],0);
             if (letra == null) {throw new IllegalArgumentException();}
-            if (letra.equalsIgnoreCase("")) {pasaTurno();} //Pulsa Enter
+            if (letra.equalsIgnoreCase("")) {Juego.pasaTurno();} //Pulsa Enter
             if (letra.equalsIgnoreCase("ayuda")) {ayuda();} 
             else if (letra.equalsIgnoreCase("s")) {sal();}
             if (argumentos.length==3) {
@@ -91,12 +72,12 @@ public class Main {
                 if (dificultad == null) {throw new IllegalArgumentException();} 
                 if (letra.equalsIgnoreCase("n")) {
                     if (filas*columnas<=0) {throw new IllegalArgumentException();}
-                    creaPartida(filas,columnas,dificultad);
+                    Juego.creaPartida(filas,columnas,dificultad);
                 }
             }
         } catch (Exception excepcion) {
             System.out.println("Error: "+excepcion);
-            capturaComandos(); 
+            actualiza(); 
         }
     }
 }

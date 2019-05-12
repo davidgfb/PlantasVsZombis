@@ -1,9 +1,26 @@
 package modelo;
 
+import static controlador.Main.juego;
+import texto.Tablero;
+
 public class Juego {
-    static public int turnosRepartosZombis=30,zombisPartida,turnosInicialesSinZombis;
+    static public int turnosRepartosZombis=30,zombisPartida,turnosInicialesSinZombis, turno=0;
     boolean apareceZombi=true;
-    static public int turno;
+    public static boolean partidaCreada = false, noTerminada=true;
+    public static Tablero tablero;
+    
+    static public void reiniciaAtributos() {Juego.turno=0;}
+    
+    public static void pasaTurno() {tablero.Tablero();}
+    
+    public static void creaPartida(int filas,int columnas, String dificultad) {
+        Juego.partidaCreada=true;
+        new Matriz(filas,columnas); //crea el objeto tablero.matriz para representar
+        new Tablero();
+        juego = new Juego(dificultad);
+        Girasol.reiniciaAtributos();
+        Juego.reiniciaAtributos();
+    }
     
     public Juego(String dificultadJuego) {
         if (dificultadJuego.equalsIgnoreCase("baja")) {

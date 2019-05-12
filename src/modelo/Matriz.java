@@ -3,9 +3,9 @@ package modelo;
 public class Matriz {
     public static String[][] matriz;
     static String[] vector; //estas variables ocupan espacio fijo en memoria
-    int posicionVector=-1;
+    static int posicionVector=-1;
     
-    void MatrizAVector() {
+    static void MatrizAVector() {
         vector=new String[getMatrizNumeroElementos()];
         int posicionElementoMatriz=0;
         for (String[] filas : matriz) {
@@ -24,9 +24,9 @@ public class Matriz {
     
     static public int getMatrizNumeroColumnas() {return matriz[0].length;} 
     
-    int getMatrizNumeroElementos() {return getMatrizNumeroFilas()*getMatrizNumeroColumnas();}
+    static int getMatrizNumeroElementos() {return getMatrizNumeroFilas()*getMatrizNumeroColumnas();}
     
-    public String getVectorSiguienteElemento() {
+    static public String getVectorSiguienteElemento() {
         MatrizAVector(); //convierte la matriz a un vector 
         posicionVector++;
         if (posicionVector==getMatrizNumeroElementos()) {posicionVector=0;}

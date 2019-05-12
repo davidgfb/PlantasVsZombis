@@ -1,5 +1,4 @@
-package modelo;
-import controlador.Main; 
+package modelo; 
 
 public abstract class Planta extends Personaje {
     public static Girasol[] girasoles;
@@ -36,7 +35,7 @@ public abstract class Planta extends Personaje {
     }
     
     public static void planta(String planta,int fila,int columna) {
-        if (Main.partidasCreadas==0) {System.out.println("Aún no ha iniciado la partida");} 
+        if (!Juego.partidaCreada) {System.out.println("Aún no ha iniciado la partida");} 
         else {
             if (!Matriz.getOcupado(fila, columna)) { 
                 if (planta.equalsIgnoreCase("girasol")) {
@@ -47,7 +46,7 @@ public abstract class Planta extends Personaje {
                     Lanzaguisantes lanzaguisantes = new Lanzaguisantes(fila,columna);
                     grupoLanzaguisantes[Lanzaguisantes.cantidad]=lanzaguisantes;
                 }
-                Main.tablero.Tablero();
+                Juego.tablero.Tablero();
             } else {System.out.println("Casilla ocupada: por favor escoja otra");}
         }
     }
