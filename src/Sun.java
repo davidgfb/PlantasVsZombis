@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 public class Sun extends JPanel implements MouseListener {
 
     private GamePanel gp;
-    private Image sunImage;
 
     private int myX;
     private int myY;
@@ -22,14 +21,12 @@ public class Sun extends JPanel implements MouseListener {
         myX = startX;
         myY = startY;
         setLocation(myX, myY);
-        sunImage = new ImageIcon(this.getClass().getResource("images/sun.png")).getImage();
         addMouseListener(this);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); 
-        g.drawImage(sunImage, 0, 0, null);
         gp.setSunScore(gp.getSunScore() + 25); //añade 25 soles
         gp.remove(this);
         gp.getActiveSuns().remove(this);
