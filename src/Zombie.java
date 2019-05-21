@@ -1,8 +1,5 @@
 import javax.swing.*;
 
-/**
- * Created by Armin on 6/25/2016.
- */
 public class Zombie {
 
     private int health = 1000;

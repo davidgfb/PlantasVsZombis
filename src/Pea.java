@@ -1,8 +1,5 @@
 import java.awt.*;
 
-/**
- * Created by Armin on 6/25/2016.
- */
 public class Pea {
 
     private int posX;
@@ -27,7 +24,7 @@ public class Pea {
                     System.out.println("ZOMBIE DIED");
 
                     gp.getLaneZombies().get(myLane).remove(i);
-                    GamePanel.setProgress(10);
+                    //GamePanel.setProgress(10);
                     exit = true;
                 }
                 gp.getLaneZombies().get(myLane).remove(this);

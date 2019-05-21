@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.*;
-import java.util.logging.Logger;
 
-/**
- * @author Vaibhav Singh Sikarwar
- */
 public class LevelData {
 
     public static String LEVEL_NUMBER = "1";
@@ -37,14 +27,9 @@ public class LevelData {
 
     public static void write(String lvl) {
         File f = new File("LEVEL_CONTENT.vbhv");
-        try {
-            BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
-            bwr.write(lvl);
-            bwr.close();
-            LEVEL_NUMBER = lvl;
-        } catch (IOException ex) {
-            Logger.getLogger(LevelData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
+        LEVEL_NUMBER = "2";
+        
 
     }
 }

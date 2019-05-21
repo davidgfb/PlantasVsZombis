@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-/**
- * Created by Armin on 6/25/2016.
- */
+
+//@author David Gracia y Emmanuel Gbadegesin
+
 public class GameWindow extends JFrame {
 
     enum PlantType {

@@ -7,9 +7,6 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by Armin on 6/25/2016.
- */
 public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
     private Image bgImage;
@@ -230,25 +227,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         mouseY = e.getY();
     }
 
-    static int progress = 0;
-
-    public static void setProgress(int num) {
-        progress = progress + num;
-        System.out.println(progress);
-        if (progress >= 150) {
-            if ("1".equals(LevelData.LEVEL_NUMBER)) {
-                JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
-                GameWindow.gw.dispose();
-                LevelData.write("2");
-                GameWindow.gw = new GameWindow();
-            } else {
-                JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
-                LevelData.write("1");
-                System.exit(0);
-            }
-            progress = 0;
-        }
-    }
+    
 
     public GameWindow.PlantType getActivePlantingBrush() {
         return activePlantingBrush;
