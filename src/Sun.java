@@ -28,8 +28,11 @@ public class Sun extends JPanel implements MouseListener {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+        super.paintComponent(g); 
         g.drawImage(sunImage, 0, 0, null);
+        gp.setSunScore(gp.getSunScore() + 25); //añade 25 soles
+        gp.remove(this);
+        gp.getActiveSuns().remove(this);
     }
 
     public void advance() {
@@ -57,9 +60,6 @@ public class Sun extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        gp.setSunScore(gp.getSunScore() + 25);
-        gp.remove(this);
-        gp.getActiveSuns().remove(this);
     }
 
     @Override
