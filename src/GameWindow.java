@@ -8,6 +8,15 @@ public class GameWindow extends JFrame {
     enum PlantType {None,Sunflower,Peashooter,Nuez}
     
     static GameWindow gw;
+    
+    /*Falta:
+    -vida personajes
+    -hashmap
+    -documento explicativo 
+    -traducir a español 
+    -comentar en español
+    -agrupar fotos en una sola 
+    -optimizar codigo con enum,listas,tuplas,for */
 
     public GameWindow() {
         setSize(1012, 785);
