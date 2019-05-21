@@ -9,8 +9,7 @@ public class GameWindow extends JFrame {
     enum PlantType {
         None,
         Sunflower,
-        Peashooter,
-        FreezePeashooter
+        Peashooter
     }
 
     //PlantType activePlantingBrush = PlantType.None;
@@ -42,12 +41,6 @@ public class GameWindow extends JFrame {
         });
         getLayeredPane().add(peashooter, new Integer(3));
 
-        PlantCard freezepeashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
-        freezepeashooter.setLocation(240, 8);
-        freezepeashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.FreezePeashooter);
-        });
-        getLayeredPane().add(freezepeashooter, new Integer(3));
 
 
         getLayeredPane().add(sun, new Integer(2));
