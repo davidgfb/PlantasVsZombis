@@ -13,6 +13,8 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     private Image peashooterImage;
     private Image sunflowerImage;
     private Image peaImage;
+    
+    private Image nuez;
 
     private Image normalZombieImage;
     private Image coneHeadZombieImage;
@@ -52,6 +54,8 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         bgImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
 
+        nuez = new ImageIcon(this.getClass().getResource("images/plants/nuez.gif")).getImage();
+        
         peashooterImage = new ImageIcon(this.getClass().getResource("images/plants/peashooter.gif")).getImage();
         sunflowerImage = new ImageIcon(this.getClass().getResource("images/plants/sunflower.gif")).getImage();
         peaImage = new ImageIcon(this.getClass().getResource("images/pea.png")).getImage();
@@ -155,6 +159,11 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
                 if (p instanceof Peashooter) {
                     g.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
                 }
+                
+                if (p instanceof Nuez) {
+                    g.drawImage(nuez, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
+                }
+                
                 if (p instanceof Sunflower) {
                     g.drawImage(sunflowerImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
                 }
@@ -196,14 +205,25 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             this.y = y;
         }
 
+        
+        int vidaNuez=50;
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             if (activePlantingBrush == GameWindow.PlantType.Sunflower) {
-                if (getSunScore() >= 50) {
+                if (getSunScore() >= vidaNuez) {
                     colliders[x + y * 9].setPlant(new Sunflower(GamePanel.this, x, y));
-                    setSunScore(getSunScore() - 50);
+                    setSunScore(getSunScore() - vidaNuez);
                 }
             }
+            
+            if (activePlantingBrush == GameWindow.PlantType.Nuez) {
+                if (getSunScore() >= vidaNuez) {
+                    colliders[x + y * 9].setPlant(new Nuez(GamePanel.this, x, y));
+                    setSunScore(getSunScore() - vidaNuez);
+                }
+            }
+            
             if (activePlantingBrush == GameWindow.PlantType.Peashooter) {
                 if (getSunScore() >= 100) {
                     colliders[x + y * 9].setPlant(new Peashooter(GamePanel.this, x, y));

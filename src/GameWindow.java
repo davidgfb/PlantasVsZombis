@@ -9,7 +9,8 @@ public class GameWindow extends JFrame {
     enum PlantType {
         None,
         Sunflower,
-        Peashooter
+        Peashooter,
+        Nuez
     }
 
     //PlantType activePlantingBrush = PlantType.None;
@@ -40,6 +41,14 @@ public class GameWindow extends JFrame {
             gp.setActivePlantingBrush(PlantType.Peashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
+        
+        
+        PlantCard nuez = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_wallnut.png")).getImage());
+        nuez.setLocation(240, 8);
+        nuez.setAction((ActionEvent e) -> {
+            gp.setActivePlantingBrush(PlantType.Nuez);
+        });
+        getLayeredPane().add(nuez, new Integer(3));
 
 
 
