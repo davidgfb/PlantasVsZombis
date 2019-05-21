@@ -2,13 +2,11 @@ import javax.swing.*;
 
 public class Zombie {
 
-    private int health = 1000;
-    private int speed = 1;
+    private int health = 1000,speed = 1;
 
     private GamePanel gp;
 
-    private int posX = 1000;
-    private int myLane;
+    private int posX = 1000,myLane;
     private boolean isMoving = true;
 
     public Zombie(GamePanel parent, int lane) {
@@ -28,22 +26,16 @@ public class Zombie {
             }
             if (!isCollides) {
                 if (slowInt > 0) {
-                    if (slowInt % 2 == 0) {
-                        posX--;
-                    }
+                    if (slowInt % 2 == 0) {posX--;}
                     slowInt--;
-                } else {
-                    posX -= 1;
-                }
+                } else {posX -= 1;}
             } else {
                 collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 10);
-                if (collided.assignedPlant.getHealth() < 0) {
-                    collided.removePlant();
-                }
+                if (collided.assignedPlant.getHealth() < 0) {collided.removePlant();}
             }
             if (posX < 0) {
                 isMoving = false;
-                JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+                JOptionPane.showMessageDialog(gp, "Los zombis ganan!" + '\n' + "Reiniciando nivel");
                 GameWindow.gw.dispose();
                 GameWindow.gw = new GameWindow();
             }
@@ -52,76 +44,40 @@ public class Zombie {
 
     int slowInt = 0;
 
-    public void slow() {
-        slowInt = 1000;
-    }
+    public void slow() {slowInt = 1000;}
 
     public static Zombie getZombie(String type, GamePanel parent, int lane) {
         Zombie z = new Zombie(parent, lane);
-        switch (type) {
-            case "NormalZombie":
-                z = new NormalZombie(parent, lane);
-                break;
-            case "ConeHeadZombie":
-                z = new ConeHeadZombie(parent, lane);
-                break;
-        }
+        if (type.equals("NormalZombie")) {z = new NormalZombie(parent, lane);}
+        else if (type.equals("ConeHeadZombie")) {z = new ConeHeadZombie(parent, lane);}
         return z;
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public int getHealth() {return health;}
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+    public void setHealth(int health) {this.health = health;}
 
-    public int getSpeed() {
-        return speed;
-    }
+    public int getSpeed() {return speed;}
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
+    public void setSpeed(int speed) {this.speed = speed;}
 
-    public GamePanel getGp() {
-        return gp;
-    }
+    public GamePanel getGp() {return gp;}
 
-    public void setGp(GamePanel gp) {
-        this.gp = gp;
-    }
+    public void setGp(GamePanel gp) {this.gp = gp;}
 
-    public int getPosX() {
-        return posX;
-    }
+    public int getPosX() {return posX;}
 
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
+    public void setPosX(int posX) {this.posX = posX;}
 
-    public int getMyLane() {
-        return myLane;
-    }
+    public int getMyLane() {return myLane;}
 
-    public void setMyLane(int myLane) {
-        this.myLane = myLane;
-    }
+    public void setMyLane(int myLane) {this.myLane = myLane;}
 
-    public boolean isMoving() {
-        return isMoving;
-    }
+    public boolean isMoving() {return isMoving;}
 
-    public void setMoving(boolean moving) {
-        isMoving = moving;
-    }
+    public void setMoving(boolean moving) {isMoving = moving;}
 
-    public int getSlowInt() {
-        return slowInt;
-    }
+    public int getSlowInt() {return slowInt;}
 
-    public void setSlowInt(int slowInt) {
-        this.slowInt = slowInt;
-    }
+    public void setSlowInt(int slowInt) {this.slowInt = slowInt;}
 }

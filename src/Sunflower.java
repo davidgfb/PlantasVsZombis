@@ -14,5 +14,4 @@ public class Sunflower extends Plant {
         });
         sunProduceTimer.start();
     }
-
 }

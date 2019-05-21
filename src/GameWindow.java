@@ -1,19 +1,13 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-
 //@author David Gracia y Emmanuel Gbadegesin
 
 public class GameWindow extends JFrame {
 
-    enum PlantType {
-        None,
-        Sunflower,
-        Peashooter,
-        Nuez
-    }
-
-    //PlantType activePlantingBrush = PlantType.None;
+    enum PlantType {None,Sunflower,Peashooter,Nuez}
+    
+    static GameWindow gw;
 
     public GameWindow() {
         setSize(1012, 785);
@@ -30,27 +24,18 @@ public class GameWindow extends JFrame {
 
         PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_sunflower.png")).getImage());
         sunflower.setLocation(110, 8);
-        sunflower.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Sunflower);
-        });
+        sunflower.setAction((ActionEvent e) -> {gp.setActivePlantingBrush(PlantType.Sunflower);});
         getLayeredPane().add(sunflower, new Integer(3));
 
         PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_peashooter.png")).getImage());
         peashooter.setLocation(175, 8);
-        peashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Peashooter);
-        });
+        peashooter.setAction((ActionEvent e) -> {gp.setActivePlantingBrush(PlantType.Peashooter);});
         getLayeredPane().add(peashooter, new Integer(3));
-        
         
         PlantCard nuez = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_wallnut.png")).getImage());
         nuez.setLocation(240, 8);
-        nuez.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Nuez);
-        });
+        nuez.setAction((ActionEvent e) -> {gp.setActivePlantingBrush(PlantType.Nuez);});
         getLayeredPane().add(nuez, new Integer(3));
-
-
 
         getLayeredPane().add(sun, new Integer(2));
         setResizable(false);
@@ -64,14 +49,9 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    static GameWindow gw;
-
-    
-
     public static void main(String[] args) {
         gw = new GameWindow(true);
         gw.dispose();
         gw = new GameWindow();
     }
-
 }

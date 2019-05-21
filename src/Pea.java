@@ -2,10 +2,9 @@ import java.awt.*;
 
 public class Pea {
 
-    private int posX;
+    private int posX,myLane;
     protected GamePanel gp;
-    private int myLane;
-
+    
     public Pea(GamePanel parent, int lane, int startX) {
         this.gp = parent;
         this.myLane = lane;
@@ -24,32 +23,19 @@ public class Pea {
                     System.out.println("ZOMBIE DIED");
 
                     gp.getLaneZombies().get(myLane).remove(i);
-                    //GamePanel.setProgress(10);
                     exit = true;
                 }
                 gp.getLaneZombies().get(myLane).remove(this);
-                if (exit) break;
             }
         }
-        /*if(posX > 2000){
-            gp.lanePeas.get(myLane).remove(this);
-        }*/
         posX += 15;
     }
 
-    public int getPosX() {
-        return posX;
-    }
+    public int getPosX() {return posX;}
 
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
+    public void setPosX(int posX) {this.posX = posX;}
 
-    public int getMyLane() {
-        return myLane;
-    }
+    public int getMyLane() {return myLane;}
 
-    public void setMyLane(int myLane) {
-        this.myLane = myLane;
-    }
+    public void setMyLane(int myLane) {this.myLane = myLane;}
 }

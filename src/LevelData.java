@@ -3,8 +3,11 @@ import java.io.*;
 public class LevelData {
 
     public static String LEVEL_NUMBER = "1";
-    public static String[][] LEVEL_CONTENT = {{"NormalZombie"}, {"NormalZombie", "ConeHeadZombie"}};
-    public static int[][][] LEVEL_VALUE = {{{0, 99}}, {{0, 49}, {50, 99}}};
+    public static String[][] LEVEL_CONTENT = {{"NormalZombie"}, 
+        {"NormalZombie", "ConeHeadZombie"}};
+    public static int[][][] LEVEL_VALUE = {{{0, 99}}, 
+        {{0, 49}, 
+        {50, 99}}};
 
     public LevelData() {
         try {
@@ -19,17 +22,12 @@ public class LevelData {
                 BufferedReader br = new BufferedReader(new FileReader(f));
                 LEVEL_NUMBER = br.readLine();
             }
-        } catch (Exception ex) {
-
-
-        }
+        } catch (Exception ex) {}
     }
 
     public static void write(String lvl) {
         File f = new File("LEVEL_CONTENT.vbhv");
         
         LEVEL_NUMBER = "2";
-        
-
     }
 }
