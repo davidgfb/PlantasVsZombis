@@ -1,20 +1,20 @@
 public abstract class Planta {
 
-    private int health = 200,x,y;
+    private int salud = 200,x,y;
 
-    private PanelJuego gp;
+    private PanelJuego panelJuego;
 
-    public Planta(PanelJuego parent, int x, int y) {
+    public Planta(PanelJuego padre, int x, int y) {
         this.x = x;
         this.y = y;
-        gp = parent;
+        panelJuego = padre;
     }
 
-    public void stop() {}
+    public void para() {}
 
-    public int getHealth() {return health;}
+    public int getSalud() {return salud;}
 
-    public void setHealth(int health) {this.health = health;}
+    public void setSalud(int salud) {this.salud = salud;}
 
     public int getX() {return x;}
 
@@ -24,7 +24,7 @@ public abstract class Planta {
 
     public void setY(int y) {this.y = y;}
 
-    public PanelJuego getGp() {return gp;}
+    public PanelJuego getPanelJuego() {return panelJuego;}
 
-    public void setGp(PanelJuego gp) {this.gp = gp;}
+    public void setPanelJuego(PanelJuego panelJuego) {this.panelJuego = panelJuego;}
 }

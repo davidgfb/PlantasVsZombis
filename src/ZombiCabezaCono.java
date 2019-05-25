@@ -1,7 +1,7 @@
 public class ZombiCabezaCono extends Zombi {
 
-    public ZombiCabezaCono(PanelJuego parent, int lane) {
-        super(parent, lane);
-        setHealth(1800);
+    public ZombiCabezaCono(PanelJuego padre, int fila) {
+        super(padre, fila);
+        setSalud(1800);
     }
 }

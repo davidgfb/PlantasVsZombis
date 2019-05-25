@@ -7,37 +7,37 @@ import java.awt.event.MouseListener;
 
 public class CartaPlanta extends JPanel implements MouseListener {
 
-    private Image img;
-    private ActionListener al;
+    private Image imagen;
+    private ActionListener actionListener;
 
-    public CartaPlanta(Image img) {
-        setSize(64, 90);
-        this.img = img;
-        addMouseListener(this);
+    public CartaPlanta(Image imagen) {
+        setSize(64, 90); //
+        this.imagen = imagen;
+        addMouseListener(this); //
     }
 
-    public void setAction(ActionListener al) {this.al = al;}
+    public void setAccion(ActionListener actionListener) {this.actionListener = actionListener;}
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(img, 0, 0, null);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {}
-
-    @Override
-    public void mousePressed(MouseEvent e) {}
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        if (al != null) {al.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));}
+    protected void paintComponent(Graphics graficos) { //
+        super.paintComponent(graficos);
+        graficos.drawImage(imagen, 0, 0, null);
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseClicked(MouseEvent evento) {} //
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mousePressed(MouseEvent evento) {} //
+
+    @Override
+    public void mouseReleased(MouseEvent evento) { //
+        if (actionListener != null) {actionListener.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));} //
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent evento) {} //
+
+    @Override
+    public void mouseExited(MouseEvent evento) {} //
 }

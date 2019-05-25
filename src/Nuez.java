@@ -8,11 +8,10 @@ public class Nuez extends Planta {
     public Nuez(PanelJuego parent, int x, int y) {
         super(parent, x, y);
         shootTimer = new Timer(2000, (ActionEvent e) -> {
-            if (getGp().getLaneZombies().get(y).size() > 0) {}
+            if (getPanelJuego().getLaneZombies().get(y).size() > 0) {}
         });
         shootTimer.start();
     }
 
-    @Override
-    public void stop() {shootTimer.stop();}
+    public void stop() {shootTimer.stop();} //no tocar
 }

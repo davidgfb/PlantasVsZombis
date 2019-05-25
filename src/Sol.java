@@ -5,39 +5,39 @@ import java.awt.event.MouseListener;
 
 public class Sol extends JPanel implements MouseListener {
 
-    private PanelJuego gp;
+    private PanelJuego panelJuego;
 
-    private int myX,myY,endY,destruct = 200;
+    private int miX,miY,yFinal,destruccion = 200;
 
-    public Sol(PanelJuego parent, int startX, int startY, int endY) {
-        this.gp = parent;
-        this.endY = endY;
+    public Sol(PanelJuego padre, int xComienzo, int YComienzo, int yFinal) {
+        this.panelJuego = padre;
+        this.yFinal = yFinal;
         setSize(80, 80);
         setOpaque(false);
-        myX = startX;
-        myY = startY;
-        setLocation(myX, myY);
+        miX = xComienzo;
+        miY = YComienzo;
+        setLocation(miX, miY);
         addMouseListener(this);
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); 
-        gp.setSunScore(gp.getSunScore() + 25); //añade 25 soles
-        gp.remove(this);
-        gp.getActiveSuns().remove(this);
+    protected void paintComponent(Graphics graficos) { //
+        super.paintComponent(graficos); 
+        panelJuego.setPuntuacionSoles(panelJuego.getpuntuacionSoles() + 25); //añade 25 soles
+        panelJuego.remove(this);
+        panelJuego.getsolesActivos().remove(this);
     }
 
     public void avanza() {
-        if (myY < endY) {myY += 4;} 
+        if (miY < yFinal) {miY += 4;} 
         else {
-            destruct--;
-            if (destruct < 0) {
-                gp.remove(this);
-                gp.getActiveSuns().remove(this);
+            destruccion--;
+            if (destruccion < 0) {
+                panelJuego.remove(this);
+                panelJuego.getsolesActivos().remove(this);
             }
         }
-        setLocation(myX, myY);
+        setLocation(miX, miY);
     }
 
     @Override

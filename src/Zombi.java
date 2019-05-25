@@ -18,7 +18,7 @@ public class Zombi {
             boolean estaChocando = false;
             Colisionador choque = null;
             for (int fila = miFila * 9; fila < (miFila + 1) * 9; fila++) {
-                if (panelJuego.getColliders()[fila].assignedPlant != null && panelJuego.getColliders()[fila].isInsideCollider(x)) {
+                if (panelJuego.getColliders()[fila].plantaAsignada != null && panelJuego.getColliders()[fila].estaColisionando(x)) {
                     estaChocando = true;
                     choque = panelJuego.getColliders()[fila];
                 }
@@ -29,14 +29,14 @@ public class Zombi {
                     lento--;
                 } else {x -= 1;}
             } else {
-                choque.assignedPlant.setHealth(choque.assignedPlant.getHealth() - 10);
-                if (choque.assignedPlant.getHealth() < 0) {choque.removePlant();}
+                choque.plantaAsignada.setSalud(choque.plantaAsignada.getSalud() - 10);
+                if (choque.plantaAsignada.getSalud() < 0) {choque.quitaPlanta();}
             }
             if (x < 0) {
                 seMueve = false;
                 JOptionPane.showMessageDialog(panelJuego, "Los zombis ganan!\nReiniciando nivel");
-                VentanaJuego.gw.dispose();
-                VentanaJuego.gw = new VentanaJuego();
+                VentanaJuego.ventanaJuego.dispose(); //
+                VentanaJuego.ventanaJuego = new VentanaJuego();
             }
         }
     }
@@ -45,16 +45,16 @@ public class Zombi {
 
     public void slow() {lento = 1000;}
 
-    public static Zombi getZombie(String type, PanelJuego padre, int fila) {
+    public static Zombi getZombi(String type, PanelJuego padre, int fila) {
         Zombi z = new Zombi(padre, fila);
         if (type.equals("NormalZombie")) {z = new ZombiNormal(padre, fila);}
         else if (type.equals("ConeHeadZombie")) {z = new ZombiCabezaCono(padre, fila);}
         return z;
     }
 
-    public int getHealth() {return vida;}
+    public int getSalud() {return vida;}
 
-    public void setHealth(int vida) {this.vida = vida;}
+    public void setSalud(int vida) {this.vida = vida;}
 
     public int getSpeed() {return velocidad;}
 

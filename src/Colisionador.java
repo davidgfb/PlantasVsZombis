@@ -6,42 +6,42 @@ import java.awt.event.MouseListener;
 
 public class Colisionador extends JPanel implements MouseListener {
 
-    private ActionListener al;
+    private ActionListener accionEscuchada;
 
-    public Colisionador() {
-        setOpaque(false);
-        addMouseListener(this);
-        setSize(100, 120);
+    public Colisionador() { //constructor
+        setOpaque(false); //
+        addMouseListener(this); //
+        setSize(100, 120); //
     }
 
-    public Planta assignedPlant;
+    public Planta plantaAsignada;
 
-    public void setPlant(Planta p) {assignedPlant = p;}
+    public void setPlant(Planta planta) {plantaAsignada = planta;}
 
-    public void removePlant() {
-        assignedPlant.stop();
-        assignedPlant = null;
+    public void quitaPlanta() {
+        plantaAsignada.para();
+        plantaAsignada = null;
     }
 
-    public boolean isInsideCollider(int tx) {return (tx > getLocation().x) && (tx < getLocation().x + 100);}
+    public boolean estaColisionando(int area) {return (area > getLocation().x) && (area < getLocation().x + 100);}
 
-    public void setAction(ActionListener al) {this.al = al;}
+    public void setAccion(ActionListener accionEscuchada) {this.accionEscuchada = accionEscuchada;}
 
-
-    @Override
-    public void mouseClicked(MouseEvent e) {}
 
     @Override
-    public void mousePressed(MouseEvent e) {}
+    public void mouseClicked(MouseEvent evento) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-        if (al != null) {al.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));}
+    public void mousePressed(MouseEvent evento) {}
+
+    @Override
+    public void mouseReleased(MouseEvent evento) {
+        if (accionEscuchada != null) {accionEscuchada.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));}
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent evento) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent evento) {}
 }

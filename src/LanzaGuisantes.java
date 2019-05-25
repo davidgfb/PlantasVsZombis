@@ -3,16 +3,15 @@ import java.awt.event.ActionEvent;
 
 public class LanzaGuisantes extends Planta {
 
-    public Timer shootTimer;
+    public Timer temporizadorDisparo;
 
-    public LanzaGuisantes(PanelJuego parent, int x, int y) {
-        super(parent, x, y);
-        shootTimer = new Timer(2000, (ActionEvent e) -> {
-            if (getGp().getLaneZombies().get(y).size() > 0) {getGp().getLanePeas().get(y).add(new Guisante(getGp(), y, 103 + this.getX() * 100));}
+    public LanzaGuisantes(PanelJuego padre, int x, int y) {
+        super(padre, x, y);
+        temporizadorDisparo = new Timer(2000, (ActionEvent e) -> {
+            if (getPanelJuego().getLaneZombies().get(y).size() > 0) {getPanelJuego().getLanePeas().get(y).add(new Guisante(getPanelJuego(), y, 103 + this.getX() * 100));}
         });
-        shootTimer.start();
+        temporizadorDisparo.start();
     }
 
-    @Override
-    public void stop() {shootTimer.stop();}
+    public void stop() {temporizadorDisparo.stop();} //no tocar
 }
