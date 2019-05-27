@@ -16,8 +16,8 @@ public class Guisante {
 
     public void avanza() {
         Rectangle pRect = new Rectangle(posX, 130 + myLane * 120, 28, 28);
-        for (int i = 0; i < panelJuego.getLaneZombies().get(myLane).size(); i++) {
-            Zombi zombi = panelJuego.getLaneZombies().get(myLane).get(i);
+        for (int i = 0; i < panelJuego.getFilaZombis().get(myLane).size(); i++) {
+            Zombi zombi = panelJuego.getFilaZombis().get(myLane).get(i);
             Rectangle zRect = new Rectangle(zombi.getPosX(), 109 + myLane * 120, 400, 120);
             if (pRect.intersects(zRect)) {
                 zombi.quitaSalud(1);
@@ -25,10 +25,10 @@ public class Guisante {
                 if (zombi.getSalud() < 0) {
                     System.out.println("ZOMBIE DIED");
 
-                    panelJuego.getLaneZombies().get(myLane).remove(i);
+                    panelJuego.getFilaZombis().get(myLane).remove(i);
                     exit = true;
                 }
-                panelJuego.getLaneZombies().get(myLane).remove(this);
+                panelJuego.getFilaZombis().get(myLane).remove(this);
             }
         }
         posX += 15;

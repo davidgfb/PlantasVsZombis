@@ -133,9 +133,7 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
         }
     }
     
-    void restaSoles(int cantidad) {
-        this.soles-=cantidad;
-    }
+    void restaSoles(int cantidad) {this.soles-=cantidad;}
 
     private class PlantActionListener implements ActionListener {
 
@@ -185,17 +183,17 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
         mouseY = e.getY();
     }
 
-    public VentanaJuego.tipoPlanta getActivePlantingBrush() {return pincelPlantaActiva;}
+    public VentanaJuego.tipoPlanta getPincelPlantaActiva() {return pincelPlantaActiva;}
 
     public void setPincelPlantaActiva (VentanaJuego.tipoPlanta pincelPlantaActiva) {this.pincelPlantaActiva = pincelPlantaActiva;}
 
-    public ArrayList<ArrayList<Zombi>> getLaneZombies() {return filaZombis;}
+    public ArrayList<ArrayList<Zombi>> getFilaZombis() {return filaZombis;}
 
-    public void setLaneZombies(ArrayList<ArrayList<Zombi>> filaZombis) {this.filaZombis = filaZombis;}
+    public void setFilaZombis(ArrayList<ArrayList<Zombi>> filaZombis) {this.filaZombis = filaZombis;}
 
-    public ArrayList<ArrayList<Guisante>> getLanePeas() {return filaGuisantes;}
+    public ArrayList<ArrayList<Guisante>> getFilaGuisantes() {return filaGuisantes;}
 
-    public void setLanePeas(ArrayList<ArrayList<Guisante>> filaGuisantes) {this.filaGuisantes = filaGuisantes;}
+    public void setFilaGuisantes(ArrayList<ArrayList<Guisante>> filaGuisantes) {this.filaGuisantes = filaGuisantes;}
 
     public Colisionador[] getColliders() {return colisionadores;}
 

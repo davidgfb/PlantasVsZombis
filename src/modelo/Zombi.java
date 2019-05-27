@@ -9,7 +9,7 @@ public class Zombi extends Personaje {
     
     double velocidad = 0.5;
             
-    private int vida = 5, x = 1000, miFila, daño = 1;
+    private int vida = 5, x = 1000, miFila, daño = 1, poblacion=0;
 
     private PanelJuego panelJuego;
 
@@ -17,8 +17,17 @@ public class Zombi extends Personaje {
 
     public Zombi(PanelJuego padre, int fila) {
         super(1);
-        this.panelJuego = padre;
-        miFila = fila;
+        if (poblacion<=5) {
+        
+            this.panelJuego = padre;
+            miFila = fila;
+            poblacion++;
+        }
+        else {
+            while (padre.getFilaZombis().size()<=0) {
+                System.out.println("Ganaste!");
+            }
+        }
     }
 
     public void avanza() {
