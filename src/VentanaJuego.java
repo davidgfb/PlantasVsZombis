@@ -13,8 +13,6 @@ public class VentanaJuego extends JFrame {
     -vida personajes
     -hashmap
     -documento explicativo 
-    -traducir a español 
-    -comentar en español
     -agrupar fotos en una sola 
     -optimizar codigo con enum,listas,tuplas,for */
 
@@ -23,44 +21,33 @@ public class VentanaJuego extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
 
-        JLabel sun = new JLabel("SUN");
-        sun.setLocation(37, 80);
-        sun.setSize(60, 20);
+        JLabel sol = new JLabel("SUN");
+        sol.setLocation(37, 80);
+        sol.setSize(60, 20);
 
-        PanelJuego gp = new PanelJuego(sun);
-        gp.setLocation(0, 0);
-        getLayeredPane().add(gp, new Integer(0));
+        PanelJuego ventanaJuego = new PanelJuego(sol);
+        ventanaJuego.setLocation(0, 0);
+        getLayeredPane().add(ventanaJuego, new Integer(0));
 
         CartaPlanta girasol = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartas/cartaGirasol.png")).getImage());
         girasol.setLocation(110, 8);
-        girasol.setAccion((ActionEvent e) -> {gp.setPincelPlantaActiva(tipoPlanta.Girasol);});
+        girasol.setAccion((ActionEvent e) -> {ventanaJuego.setPincelPlantaActiva(tipoPlanta.Girasol);});
         getLayeredPane().add(girasol, new Integer(3));
 
         CartaPlanta lanzaGuisantes = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartas/cartaLanzaGuisantes.png")).getImage());
         lanzaGuisantes.setLocation(175, 8);
-        lanzaGuisantes.setAccion((ActionEvent e) -> {gp.setPincelPlantaActiva(tipoPlanta.LanzaGuisantes);});
+        lanzaGuisantes.setAccion((ActionEvent e) -> {ventanaJuego.setPincelPlantaActiva(tipoPlanta.LanzaGuisantes);});
         getLayeredPane().add(lanzaGuisantes, new Integer(3));
         
         CartaPlanta nuez = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartas/cartaNuez.png")).getImage());
         nuez.setLocation(240, 8);
-        nuez.setAccion((ActionEvent e) -> {gp.setPincelPlantaActiva(tipoPlanta.Nuez);});
+        nuez.setAccion((ActionEvent e) -> {ventanaJuego.setPincelPlantaActiva(tipoPlanta.Nuez);});
         getLayeredPane().add(nuez, new Integer(3));
 
-        getLayeredPane().add(sun, new Integer(2));
+        getLayeredPane().add(sol, new Integer(2));
         setResizable(false);
         setVisible(true);
     }
 
-    public VentanaJuego(boolean b) {
-        setSize(1012, 785);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        ventanaJuego = new VentanaJuego(true);
-        ventanaJuego.dispose();
-        ventanaJuego = new VentanaJuego();
-    }
+    public static void main(String[] args) {ventanaJuego = new VentanaJuego();}
 }

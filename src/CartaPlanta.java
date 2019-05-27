@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 public class CartaPlanta extends JPanel implements MouseListener {
 
-    private Image imagen;
+    private final Image imagen;
     private ActionListener actionListener;
 
     public CartaPlanta(Image imagen) {

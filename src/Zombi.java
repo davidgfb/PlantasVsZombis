@@ -1,14 +1,17 @@
 import javax.swing.*;
 
-public class Zombi {
-
-    private int vida = 1000, velocidad = 1, x = 1000, miFila;
+public class Zombi extends Personaje {
+    
+    double velocidad = 0.5;
+            
+    private int vida = 5, x = 1000, miFila, daño = 1;
 
     private PanelJuego panelJuego;
 
     private boolean seMueve = true;
 
-    public Zombi (PanelJuego padre, int fila) {
+    public Zombi(PanelJuego padre, int fila) {
+        super(1);
         this.panelJuego = padre;
         miFila = fila;
     }
@@ -29,54 +32,55 @@ public class Zombi {
                     lento--;
                 } else {x -= 1;}
             } else {
-                choque.plantaAsignada.setSalud(choque.plantaAsignada.getSalud() - 10);
+                choque.plantaAsignada.quitaSalud(daño);
                 if (choque.plantaAsignada.getSalud() < 0) {choque.quitaPlanta();}
             }
             if (x < 0) {
                 seMueve = false;
-                JOptionPane.showMessageDialog(panelJuego, "Los zombis ganan!\nReiniciando nivel");
+                JOptionPane.showMessageDialog(panelJuego, "Los zombis ganan!");
                 VentanaJuego.ventanaJuego.dispose(); //
-                VentanaJuego.ventanaJuego = new VentanaJuego();
             }
         }
     }
+    
+    
 
-    int lento = 0;
+    double lento = 0.5;
 
-    public void slow() {lento = 1000;}
+    public void lento() {lento = 0.5;}
 
     public static Zombi getZombi(String type, PanelJuego padre, int fila) {
-        Zombi z = new Zombi(padre, fila);
-        if (type.equals("NormalZombie")) {z = new ZombiNormal(padre, fila);}
-        else if (type.equals("ConeHeadZombie")) {z = new ZombiCabezaCono(padre, fila);}
-        return z;
+        Zombi zombi = null;
+        if (type.equals("NormalZombie")) {zombi = new ZombiNormal(padre, fila);}
+        else if (type.equals("ConeHeadZombie")) {zombi = new ZombiCabezaCono(padre, fila);}
+        return zombi;
     }
 
-    public int getSalud() {return vida;}
+    //public int getSalud () {return vida;}
 
-    public void setSalud(int vida) {this.vida = vida;}
+    public void setSalud (int vida) {this.vida = vida;}
 
-    public int getSpeed() {return velocidad;}
+    public double getVelocidad () {return velocidad;}
 
-    public void setSpeed(int velocidad) {this.velocidad = velocidad;}
+    public void setSpeed (int velocidad) {this.velocidad = velocidad;}
 
-    public PanelJuego getGp() {return panelJuego;}
+    public PanelJuego getPanelJuego () {return panelJuego;}
 
-    public void setGp(PanelJuego panelJuego) {this.panelJuego = panelJuego;}
+    public void setPanelJuego (PanelJuego panelJuego) {this.panelJuego = panelJuego;}
 
-    public int getPosX() {return x;}
+    public int getPosX () {return x;}
 
-    public void setPosX(int x) {this.x = x;}
+    public void setPosX (int x) {this.x = x;}
 
-    public int getMyLane() {return miFila;}
+    public int getMyLane () {return miFila;}
 
-    public void setMyLane(int miFila) {this.miFila = miFila;}
+    public void setMyLane (int miFila) {this.miFila = miFila;}
 
-    public boolean seMueve() {return seMueve;}
+    public boolean seMueve () {return seMueve;}
 
     public void setMoving(boolean moving) {seMueve = moving;}
 
-    public int getSlowInt() {return lento;}
+    public double getSlowInt() {return lento;}
 
     public void setSlowInt(int lento) {this.lento = lento;}
 }

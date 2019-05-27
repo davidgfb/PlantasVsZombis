@@ -9,27 +9,30 @@ import java.util.Random;
 
 public class PanelJuego extends JLayeredPane implements MouseMotionListener {
 
-    private Image imagenFondo, lanzaguisantesImagen, girasolImagen, nuez, imagenZombiNormal, imagenZombiCabezaCono;
+    private final Image imagenFondo, lanzaguisantesImagen, girasolImagen, nuez, imagenZombiNormal, imagenZombiCabezaCono;
     
     private Colisionador[] colisionadores;
 
     private ArrayList<ArrayList<Zombi>> filaZombis;
     private ArrayList<ArrayList<Guisante>> filaGuisantes;
-    private ArrayList<Sol> solesActivos;
-
-    private Timer contadorRefresco, contadorAvance, productorSoles, productorZombis;
+    private final Timer contadorRefresco, contadorAvance, productorSoles, productorZombis;
     
-    private JLabel puntuacionSoles;
+    private final JLabel puntuacionSoles;
 
     private VentanaJuego.tipoPlanta pincelPlantaActiva = VentanaJuego.tipoPlanta.Ninguna;
 
-    private int mouseX, mouseY,sunScore;
+    private int mouseX, mouseY, soles;
 
-    public int getpuntuacionSoles() {return sunScore;}
+    public int getPuntuacionSoles() {return soles;}
 
     public void setPuntuacionSoles(int solesPuntuacion) {
-        this.sunScore = solesPuntuacion;
-        puntuacionSoles.setText(String.valueOf(solesPuntuacion));
+        this.soles = solesPuntuacion;
+        puntuacionSoles.setText(String.valueOf(solesPuntuacion)); //
+    }
+    
+    public void añadeSoles (int solesAñadidos) {
+        this.soles += solesAñadidos;
+        puntuacionSoles.setText(String.valueOf(soles)); //
     }
 
     public PanelJuego(JLabel puntuacionSoles) {
@@ -64,33 +67,19 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
             add(colisionadorObjeto, 0); //
         }
 
-        solesActivos = new ArrayList<>();
-
         contadorRefresco = new Timer(25, (ActionEvent evento) -> {repaint();}); //
-        contadorRefresco.start(); //
-
         contadorAvance = new Timer(60, (ActionEvent evento) -> avanza()); //
+        productorSoles = new Timer(5000, (ActionEvent e) -> {añadeSoles(10);});
+        contadorRefresco.start(); //
         contadorAvance.start();
-
-        productorSoles = new Timer(5000, (ActionEvent e) -> {
-            Random rnd = new Random();
-            Sol sta = new Sol(this, rnd.nextInt(800) + 100, 0, rnd.nextInt(300) + 200);
-            solesActivos.add(sta);
-            add(sta, new Integer(1));
-        });
         productorSoles.start();
 
         productorZombis = new Timer(7000, (ActionEvent e) -> {
             Random rnd = new Random();
-            DatosNivel lvl = new DatosNivel();
-            String[] nivel = lvl.LEVEL_CONTENT[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
-            int[][] LevelValue = lvl.LEVEL_VALUE[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
             int aleatorio5 = rnd.nextInt(5);
-            int aleatorio100 = rnd.nextInt(100);
-            Zombi zombi = null;
-            for (int i = 0; i < LevelValue.length; i++) {
-                if (aleatorio100 >= LevelValue[i][0] && aleatorio100 <= LevelValue[i][1]) {zombi = Zombi.getZombi(nivel[i], PanelJuego.this, aleatorio5);}
-            }
+            int aleatorioBinario = rnd.nextInt(2);
+            String[] tipoZombi={"NormalZombie","ConeHeadZombie"};
+            Zombi zombi = Zombi.getZombi(tipoZombi[aleatorioBinario], PanelJuego.this, aleatorio5);
             filaZombis.get(aleatorio5).add(zombi);
         });
         productorZombis.start();
@@ -98,16 +87,14 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
     }
 
     private void avanza() {
-        for (int i = 0; i < 5; i++) {
-            for (Zombi z : filaZombis.get(i)) {z.avanza();}
+        for (int columna = 0; columna < 5; columna++) {
+            for (Zombi z : filaZombis.get(columna)) {z.avanza();}
 
-            for (int j = 0; j < filaGuisantes.get(i).size(); j++) {
-                Guisante p = filaGuisantes.get(i).get(j);
+            for (int j = 0; j < filaGuisantes.get(columna).size(); j++) {
+                Guisante p = filaGuisantes.get(columna).get(j);
                 p.avanza();
             }
         }
-
-        for (int i = 0; i < solesActivos.size(); i++) {solesActivos.get(i).avanza();}
     }
 
     @Override
@@ -135,42 +122,46 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
             }
         }
     }
+    
+    void restaSoles(int cantidad) {
+        this.soles-=cantidad;
+    }
 
     private class PlantActionListener implements ActionListener {
 
-        int x, y;
+        int x, y, vidaGirasol=1, vidaNuez=10, vidaLanzaGuisantes=3, precioGirasol=20, precioNuez=10, precioLanzaGuisantes=50;
 
         public PlantActionListener(int x, int y) {
             this.x = x;
             this.y = y;
         }
 
-        
-        int vidaNuez=50;
-        
         @Override
         public void actionPerformed(ActionEvent e) {
+                
+            //Girasol
             if (pincelPlantaActiva == VentanaJuego.tipoPlanta.Girasol) {
-                if (getpuntuacionSoles() >= vidaNuez) {
-                    colisionadores[x + y * 9].setPlant(new Girasol(PanelJuego.this, x, y));
-                    setPuntuacionSoles(getpuntuacionSoles() - vidaNuez);
+                if (getPuntuacionSoles() >= precioGirasol) {
+                    colisionadores[x + y * 9].setPlant(new Girasol(PanelJuego.this, x, y, vidaGirasol));
+                    restaSoles(precioGirasol);
                 }
             }
             
+            //Nuez
             if (pincelPlantaActiva == VentanaJuego.tipoPlanta.Nuez) {
-                if (getpuntuacionSoles() >= vidaNuez) {
-                    colisionadores[x + y * 9].setPlant(new Nuez(PanelJuego.this, x, y));
-                    setPuntuacionSoles(getpuntuacionSoles() - vidaNuez);
+                if (getPuntuacionSoles() >= precioNuez) {
+                    colisionadores[x + y * 9].setPlant(new Nuez(PanelJuego.this, x, y, vidaNuez));
+                    restaSoles(precioNuez);
                 }
             }
             
+            //LanzaGuisantes
             if (pincelPlantaActiva == VentanaJuego.tipoPlanta.LanzaGuisantes) {
-                if (getpuntuacionSoles() >= 100) {
-                    colisionadores[x + y * 9].setPlant(new LanzaGuisantes(PanelJuego.this, x, y));
-                    setPuntuacionSoles(getpuntuacionSoles() - 100);
+                if (getPuntuacionSoles() >= precioLanzaGuisantes) {
+                    colisionadores[x + y * 9].setPlant(new LanzaGuisantes(PanelJuego.this, x, y, vidaLanzaGuisantes));
+                    restaSoles(precioLanzaGuisantes);
                 }
             }
-
             pincelPlantaActiva = VentanaJuego.tipoPlanta.Ninguna;
         }
     }
@@ -195,10 +186,6 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
     public ArrayList<ArrayList<Guisante>> getLanePeas() {return filaGuisantes;}
 
     public void setLanePeas(ArrayList<ArrayList<Guisante>> filaGuisantes) {this.filaGuisantes = filaGuisantes;}
-
-    public ArrayList<Sol> getsolesActivos() {return solesActivos;}
-
-    public void setsolesActivos(ArrayList<Sol> solesActivos) {this.solesActivos = solesActivos;}
 
     public Colisionador[] getColliders() {return colisionadores;}
 

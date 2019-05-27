@@ -1,19 +1,21 @@
-public abstract class Planta {
+public abstract class Planta extends Personaje {
 
-    private int salud = 200,x,y;
+    private int salud, x, y;
 
-    private PanelJuego panelJuego;
+    PanelJuego panelJuego;
 
-    public Planta(PanelJuego padre, int x, int y) {
+    public Planta(PanelJuego padre, int x, int y, int salud) {
+        super(salud);
         this.x = x;
         this.y = y;
+        this.salud=salud;
         panelJuego = padre;
     }
 
     public void para() {}
 
-    public int getSalud() {return salud;}
-
+    //public int getSalud() {return salud;}
+    
     public void setSalud(int salud) {this.salud = salud;}
 
     public int getX() {return x;}
