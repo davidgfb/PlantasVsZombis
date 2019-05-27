@@ -1,3 +1,6 @@
+package graficos;
+
+import modelo.Planta;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,3 +1,12 @@
+package graficos;
+
+import modelo.ZombiCabezaCono;
+import modelo.Planta;
+import modelo.Nuez;
+import modelo.Guisante;
+import modelo.ZombiNormal;
+import modelo.LanzaGuisantes;
+import modelo.Girasol;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Random;
+import modelo.Zombi;
 
 public class PanelJuego extends JLayeredPane implements MouseMotionListener {
 
@@ -43,11 +53,11 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
         setPuntuacionSoles(150);  
 
         imagenFondo = new ImageIcon(this.getClass().getResource("imagenes/fondo.png")).getImage();
-        nuez = new ImageIcon(this.getClass().getResource("imagenes/plantas/nuez.gif")).getImage();
-        lanzaguisantesImagen = new ImageIcon(this.getClass().getResource("imagenes/plantas/lanzaguisantes.gif")).getImage();
-        girasolImagen = new ImageIcon(this.getClass().getResource("imagenes/plantas/girasol.gif")).getImage();
-        imagenZombiNormal = new ImageIcon(this.getClass().getResource("imagenes/zombis/comun.png")).getImage();
-        imagenZombiCabezaCono = new ImageIcon(this.getClass().getResource("imagenes/zombis/cabezacono.png")).getImage();
+        nuez = new ImageIcon(this.getClass().getResource("imagenes/nuez.gif")).getImage();
+        lanzaguisantesImagen = new ImageIcon(this.getClass().getResource("imagenes/lanzaguisantes.gif")).getImage();
+        girasolImagen = new ImageIcon(this.getClass().getResource("imagenes/girasol.gif")).getImage();
+        imagenZombiNormal = new ImageIcon(this.getClass().getResource("imagenes/comun.png")).getImage();
+        imagenZombiCabezaCono = new ImageIcon(this.getClass().getResource("imagenes/cabezacono.png")).getImage();
 
         filaZombis = new ArrayList<>();
         filaGuisantes = new ArrayList<>();

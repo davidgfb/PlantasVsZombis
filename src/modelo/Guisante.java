@@ -1,3 +1,6 @@
+package modelo;
+
+import graficos.PanelJuego;
 import java.awt.*;
 
 public class Guisante {

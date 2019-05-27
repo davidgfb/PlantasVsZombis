@@ -1,3 +1,6 @@
+package modelo;
+
+import graficos.PanelJuego;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 

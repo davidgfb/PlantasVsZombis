@@ -1,3 +1,8 @@
+package modelo;
+
+
+import graficos.PanelJuego;
+
 public class ZombiCabezaCono extends Zombi {
 
     public ZombiCabezaCono(PanelJuego padre, int fila) {

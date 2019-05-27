@@ -1,3 +1,5 @@
+package graficos;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -7,7 +9,7 @@ public class VentanaJuego extends JFrame {
 
     enum tipoPlanta {Ninguna,Girasol,LanzaGuisantes,Nuez}
     
-    static VentanaJuego ventanaJuego;
+    public static VentanaJuego ventanaJuego;
     
     /*Falta:
     -vida personajes
@@ -29,17 +31,17 @@ public class VentanaJuego extends JFrame {
         ventanaJuego.setLocation(0, 0);
         getLayeredPane().add(ventanaJuego, new Integer(0));
 
-        CartaPlanta girasol = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartas/cartaGirasol.png")).getImage());
+        CartaPlanta girasol = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartaGirasol.png")).getImage());
         girasol.setLocation(110, 8);
         girasol.setAccion((ActionEvent e) -> {ventanaJuego.setPincelPlantaActiva(tipoPlanta.Girasol);});
         getLayeredPane().add(girasol, new Integer(3));
 
-        CartaPlanta lanzaGuisantes = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartas/cartaLanzaGuisantes.png")).getImage());
+        CartaPlanta lanzaGuisantes = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartaLanzaGuisantes.png")).getImage());
         lanzaGuisantes.setLocation(175, 8);
         lanzaGuisantes.setAccion((ActionEvent e) -> {ventanaJuego.setPincelPlantaActiva(tipoPlanta.LanzaGuisantes);});
         getLayeredPane().add(lanzaGuisantes, new Integer(3));
         
-        CartaPlanta nuez = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartas/cartaNuez.png")).getImage());
+        CartaPlanta nuez = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartaNuez.png")).getImage());
         nuez.setLocation(240, 8);
         nuez.setAccion((ActionEvent e) -> {ventanaJuego.setPincelPlantaActiva(tipoPlanta.Nuez);});
         getLayeredPane().add(nuez, new Integer(3));

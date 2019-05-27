@@ -1,3 +1,8 @@
+package modelo;
+
+
+import graficos.PanelJuego;
+
 public abstract class Planta extends Personaje {
 
     private int salud, x, y;

@@ -1,3 +1,8 @@
+package modelo;
+
+
+import graficos.PanelJuego;
+
 public class Nuez extends Planta {
     
     public Nuez(PanelJuego padre, int x, int y, int vida) {

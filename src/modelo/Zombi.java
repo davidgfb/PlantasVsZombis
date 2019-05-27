@@ -1,3 +1,8 @@
+package modelo;
+
+import graficos.VentanaJuego;
+import graficos.Colisionador;
+import graficos.PanelJuego;
 import javax.swing.*;
 
 public class Zombi extends Personaje {
