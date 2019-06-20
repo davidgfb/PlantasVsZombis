@@ -10,10 +10,10 @@ public class LanzaGuisantes extends Planta {
 
     public LanzaGuisantes(PanelJuego padre, int x, int y, int vida) {
         super(padre, x, y, vida);
-        int frecuencia=1; //guisantes/ciclo
-        int ciclo=frecuencia*1000; //1000ms=1 ciclo=1s
-        temporizadorDisparo = new Timer (ciclo, (ActionEvent e) -> {
-            if (getPanelJuego().getFilaZombis().get(y).size() > 0) {getPanelJuego().getFilaGuisantes().get(y).add(new Guisante(getPanelJuego(), y, 103 + this.getX() * 100));}
+        temporizadorDisparo = new Timer (10000, (ActionEvent e) -> { //1000 es el tiempo que tarda en disparar
+            if (getPanelJuego().getFilaZombis().get(y).size() > 0) {
+                getPanelJuego().getFilaGuisantes().get(y).add(new Guisante(
+                        getPanelJuego(), y, 103 + this.getX() * 100));}
         });
         temporizadorDisparo.start();
     }

@@ -5,40 +5,34 @@ import java.awt.*;
 
 public class Guisante {
 
-    private int posX,myLane;
+    private int x,miCarril;
     protected PanelJuego panelJuego;
     
-    public Guisante(PanelJuego padre, int lane, int startX) {
+    public Guisante(PanelJuego padre, int carril, int xInicial) {
         this.panelJuego = padre;
-        this.myLane = lane;
-        posX = startX;
+        this.miCarril = carril;
+        x = xInicial;
     }
 
     public void avanza() {
-        Rectangle pRect = new Rectangle(posX, 130 + myLane * 120, 28, 28);
-        for (int i = 0; i < panelJuego.getFilaZombis().get(myLane).size(); i++) {
-            Zombi zombi = panelJuego.getFilaZombis().get(myLane).get(i);
-            Rectangle zRect = new Rectangle(zombi.getPosX(), 109 + myLane * 120, 400, 120);
-            if (pRect.intersects(zRect)) {
-                zombi.quitaSalud(1);
-                boolean exit = false;
-                if (zombi.getSalud() < 0) {
-                    System.out.println("ZOMBIE DIED");
-
-                    panelJuego.getFilaZombis().get(myLane).remove(i);
-                    exit = true;
-                }
-                panelJuego.getFilaZombis().get(myLane).remove(this);
+        for (int tamaño = 0; tamaño < panelJuego.getFilaZombis().get(miCarril).size(); tamaño++) {
+            Zombi zombi = panelJuego.getFilaZombis().get(miCarril).get(tamaño);
+            if (new Rectangle(x, 130 + miCarril * 120, 28, 28).intersects(new Rectangle(
+                    zombi.getPosX(), 109 + miCarril * 120, 400, 120))) { //
+                zombi.quitaSalud(1); //igual que el zombi
+                //boolean sale = false;
+                
+                panelJuego.getFilaZombis().get(miCarril).remove(this); //
             }
         }
-        posX += 15;
+        x += 15;
     }
 
-    public int getPosX() {return posX;}
+    public int getX() {return x;}
 
-    public void setPosX(int posX) {this.posX = posX;}
+    public void setX(int x) {this.x = x;}
 
-    public int getMyLane() {return myLane;}
+    public int getMiCarril() {return miCarril;}
 
-    public void setMyLane(int myLane) {this.myLane = myLane;}
+    public void setMiCarril(int miCarril) {this.miCarril = miCarril;}
 }

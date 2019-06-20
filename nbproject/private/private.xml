@@ -5,11 +5,12 @@
         <group>
             <file>file:/Users/david/PlantasVsZombis/src/modelo/Zombi.java</file>
             <file>file:/Users/david/PlantasVsZombis/src/graficos/CartaPlanta.java</file>
-            <file>file:/Users/david/PlantasVsZombis/src/graficos/PanelJuego.java</file>
-            <file>file:/Users/david/PlantasVsZombis/src/graficos/VentanaJuego.java</file>
-            <file>file:/Users/david/PlantasVsZombis/src/modelo/Guisante.java</file>
             <file>file:/Users/david/PlantasVsZombis/src/graficos/Colisionador.java</file>
+            <file>file:/Users/david/PlantasVsZombis/src/graficos/PanelJuego.java</file>
+            <file>file:/Users/david/PlantasVsZombis/</file>
+            <file>file:/Users/david/PlantasVsZombis/src/modelo/Guisante.java</file>
             <file>file:/Users/david/PlantasVsZombis/src/modelo/LanzaGuisantes.java</file>
+            <file>file:/Users/david/PlantasVsZombis/src/graficos/VentanaJuego.java</file>
         </group>
     </open-files>
 </project-private>

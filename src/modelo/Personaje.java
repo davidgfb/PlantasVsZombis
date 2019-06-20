@@ -6,7 +6,10 @@ public class Personaje {
     
     Personaje(int vida) {this.salud=vida;}
     
-    void quitaSalud (int cantidad) {this.salud-=cantidad;}
+    void quitaSalud (int cantidad) {
+        this.salud-=cantidad;
+        System.out.println("quita "+cantidad+" de salud");
+    }
     
     int getSalud () {return salud;}
 }

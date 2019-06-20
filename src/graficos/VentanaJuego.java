@@ -26,9 +26,9 @@ public class VentanaJuego extends JFrame {
 
         JLabel soles = new JLabel();
         
-        soles.setSize(60, 20);
+        soles.setSize(60, 20); //tamaño texto
 
-        PanelJuego ventanaJuego = new PanelJuego(soles);
+        PanelJuego ventanaJuego = new PanelJuego(soles); 
         
         CartaPlanta girasol = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartaGirasol.png")).getImage());
         CartaPlanta lanzaGuisantes = new CartaPlanta(new ImageIcon(this.getClass().getResource("imagenes/cartaLanzaGuisantes.png")).getImage());

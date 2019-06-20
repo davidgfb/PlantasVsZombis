@@ -1,50 +1,42 @@
 package graficos;
 
-import modelo.ZombiCabezaCono;
-import modelo.Planta;
-import modelo.Nuez;
-import modelo.Guisante;
-import modelo.ZombiNormal;
-import modelo.LanzaGuisantes;
-import modelo.Girasol;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.Timer;
+import modelo.Girasol;
+import modelo.Guisante;
+import modelo.LanzaGuisantes;
+import modelo.Nuez;
+import modelo.Planta;
 import modelo.Zombi;
+import modelo.ZombiCabezaCono;
+import modelo.ZombiNormal;
 
 public class PanelJuego extends JLayeredPane implements MouseMotionListener {
 
-    private final Image imagenFondo, lanzaguisantesImagen, girasolImagen, nuez, imagenZombiNormal, imagenZombiCabezaCono;
+    private Image imagenFondo, lanzaguisantesImagen, girasolImagen, nuez, imagenZombiNormal, imagenZombiCabezaCono;
     
     private Colisionador[] colisionadores;
 
     private ArrayList<ArrayList<Zombi>> filaZombis;
     private ArrayList<ArrayList<Guisante>> filaGuisantes;
-    private final Timer contadorRefresco, contadorAvance, productorSoles, productorZombis;
+    private Timer contadorRefresco, contadorAvance, productorSoles, productorZombis;
     
-    private final JLabel puntuacionSoles;
+    private JLabel puntuacionSoles;
 
     private VentanaJuego.tipoPlanta pincelPlantaActiva = VentanaJuego.tipoPlanta.Ninguna;
 
     private int mouseX, mouseY, soles;
-
-    public int getPuntuacionSoles() {return soles;}
-
-    public void setPuntuacionSoles(int solesPuntuacion) {
-        this.soles = solesPuntuacion;
-        puntuacionSoles.setText(String.valueOf(solesPuntuacion)); //
-    }
     
-    public void añadeSoles (int solesAñadidos) {
-        this.soles += solesAñadidos;
-        puntuacionSoles.setText(String.valueOf(soles)); //
-    }
-
     public PanelJuego(JLabel puntuacionSoles) {
         setSize(1000, 752); //
         setLayout(null); //
@@ -77,67 +69,80 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
             add(colisionadorObjeto, 0); //
         }
 
-        contadorRefresco = new Timer(25, (ActionEvent evento) -> {repaint();}); //
+        contadorRefresco = new Timer(25, (ActionEvent evento) -> {repaint();}); //repaint es funcion biblioteca
         contadorAvance = new Timer(60, (ActionEvent evento) -> avanza()); //
-        productorSoles = new Timer(5000, (ActionEvent e) -> {añadeSoles(10);});
+        productorSoles = new Timer(2, (ActionEvent e) -> {añadeSoles(10);});
         contadorRefresco.start(); //
         contadorAvance.start();
-        productorSoles.start();
+        //productorSoles.start();
 
         productorZombis = new Timer(7000, (ActionEvent e) -> {
-            Random rnd = new Random();
-            int aleatorio5 = rnd.nextInt(5);
-            int aleatorioBinario = rnd.nextInt(2);
-            String[] tipoZombi={"NormalZombie","ConeHeadZombie"};
+            Random aleatorio = new Random();
+            int aleatorio5 = aleatorio.nextInt(5);
+            int aleatorioBinario = aleatorio.nextInt(2);
+            String[] tipoZombi={"ZombiNormal","ZombiCabezaCono"};
             Zombi zombi = Zombi.getZombi(tipoZombi[aleatorioBinario], PanelJuego.this, aleatorio5);
             filaZombis.get(aleatorio5).add(zombi);
         });
         productorZombis.start();
+    }
 
+    public int getPuntuacionSoles() {return soles;}
+
+    public void setPuntuacionSoles(int solesPuntuacion) {
+        this.soles = solesPuntuacion;
+        puntuacionSoles.setText(String.valueOf(solesPuntuacion)); //
+    }
+    
+    public void añadeSoles (int solesAñadidos) {
+        this.soles += solesAñadidos;
+        puntuacionSoles.setText(String.valueOf(soles)); //
+        if (solesAñadidos>0) {System.out.println("añado "+solesAñadidos+" soles");}
+    }
+    
+    void restaSoles(int cantidad) {
+        añadeSoles(-cantidad);
+        System.out.println("resto "+cantidad);
     }
 
     private void avanza() {
         for (int columna = 0; columna < 5; columna++) {
-            for (Zombi z : filaZombis.get(columna)) {z.avanza();}
+            for (Zombi zombi : filaZombis.get(columna)) {zombi.avanza();}
 
             for (int j = 0; j < filaGuisantes.get(columna).size(); j++) {
-                Guisante p = filaGuisantes.get(columna).get(j);
-                p.avanza();
-            }
+                filaGuisantes.get(columna).get(j).avanza();}
         }
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(imagenFondo, 0, 0, null);
+    protected void paintComponent(Graphics graficos) {
+        super.paintComponent(graficos);
+        graficos.drawImage(imagenFondo, 0, 0, null);
 
         //Dibuja plantas
         for (int i = 0; i < 45; i++) {
-            Colisionador c = colisionadores[i];
-            if (c.plantaAsignada != null) {
-                Planta p = c.plantaAsignada;
-                if (p instanceof LanzaGuisantes) {g.drawImage(lanzaguisantesImagen, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);}
+            Colisionador colisionador = colisionadores[i];
+            if (colisionador.plantaAsignada != null) {
+                Planta planta = colisionador.plantaAsignada;
+                if (planta instanceof LanzaGuisantes) {graficos.drawImage(lanzaguisantesImagen, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);}
                 
-                if (p instanceof Nuez) {g.drawImage(nuez, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);}
+                else if (planta instanceof Nuez) {graficos.drawImage(nuez, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);}
                 
-                if (p instanceof Girasol) {g.drawImage(girasolImagen, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);}
+                else if (planta instanceof Girasol) {graficos.drawImage(girasolImagen, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);}
             }
         }
 
         for (int i = 0; i < 5; i++) {
-            for (Zombi z : filaZombis.get(i)) {
-                if (z instanceof ZombiNormal) {g.drawImage(imagenZombiNormal, z.getPosX(), 109 + (i * 120), null);} 
-                else if (z instanceof ZombiCabezaCono) {g.drawImage(imagenZombiCabezaCono, z.getPosX(), 109 + (i * 120), null);}
+            for (Zombi zombi : filaZombis.get(i)) {
+                if (zombi instanceof ZombiNormal) {graficos.drawImage(imagenZombiNormal, zombi.getPosX(), 109 + (i * 120), null);} 
+                else if (zombi instanceof ZombiCabezaCono) {graficos.drawImage(imagenZombiCabezaCono, zombi.getPosX(), 109 + (i * 120), null);}
             }
         }
     }
     
-    void restaSoles(int cantidad) {this.soles-=cantidad;}
-
     private class PlantActionListener implements ActionListener {
 
-        int x, y, vidaGirasol=1, vidaNuez=10, vidaLanzaGuisantes=3, precioGirasol=20, precioNuez=10, precioLanzaGuisantes=50;
+        int x, y, vidaGirasol=1, vidaNuez=10, vidaLanzaGuisantes=3, precioGirasol=20, precioNuez=50, precioLanzaGuisantes=50;
 
         public PlantActionListener(int x, int y) {
             this.x = x;
@@ -147,24 +152,24 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
                 
-            //Girasol
-            if (pincelPlantaActiva == VentanaJuego.tipoPlanta.Girasol) {
+            //##################### Girasol ####################
+            if (pincelPlantaActiva.equals(VentanaJuego.tipoPlanta.Girasol)) {
                 if (getPuntuacionSoles() >= precioGirasol) {
                     colisionadores[x + y * 9].setPlant(new Girasol(PanelJuego.this, x, y, vidaGirasol));
                     restaSoles(precioGirasol);
                 }
             }
             
-            //Nuez
-            if (pincelPlantaActiva == VentanaJuego.tipoPlanta.Nuez) {
+            //##################### Nuez ########################
+            if (pincelPlantaActiva.equals(VentanaJuego.tipoPlanta.Nuez)) {
                 if (getPuntuacionSoles() >= precioNuez) {
                     colisionadores[x + y * 9].setPlant(new Nuez(PanelJuego.this, x, y, vidaNuez));
                     restaSoles(precioNuez);
                 }
             }
             
-            //LanzaGuisantes
-            if (pincelPlantaActiva == VentanaJuego.tipoPlanta.LanzaGuisantes) {
+            //##################### LanzaGuisantes #####################
+            if (pincelPlantaActiva.equals(VentanaJuego.tipoPlanta.LanzaGuisantes)) {
                 if (getPuntuacionSoles() >= precioLanzaGuisantes) {
                     colisionadores[x + y * 9].setPlant(new LanzaGuisantes(PanelJuego.this, x, y, vidaLanzaGuisantes));
                     restaSoles(precioLanzaGuisantes);
@@ -175,12 +180,12 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
     }
 
     @Override
-    public void mouseDragged(MouseEvent e) {}
+    public void mouseDragged(MouseEvent evento) {}
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-        mouseX = e.getX();
-        mouseY = e.getY();
+    public void mouseMoved(MouseEvent evento) {
+        mouseX = evento.getX();
+        mouseY = evento.getY();
     }
 
     public VentanaJuego.tipoPlanta getPincelPlantaActiva() {return pincelPlantaActiva;}

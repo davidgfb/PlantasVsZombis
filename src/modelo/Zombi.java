@@ -18,14 +18,23 @@ public class Zombi extends Personaje {
     public Zombi(PanelJuego padre, int fila) {
         super(1);
         if (poblacion<=5) {
-        
             this.panelJuego = padre;
             miFila = fila;
             poblacion++;
         }
         else {
             while (padre.getFilaZombis().size()<=0) {
-                System.out.println("Ganaste!");
+                System.out.println("Ganaste!"); //NO FUNCIONA
+            }
+        }
+        
+        while (vida>0) {
+            if (this.vida < 0) {
+                System.out.println("zombi muerto");
+
+                panelJuego.getFilaZombis().get(miFila).remove(this);
+
+                //sale = true;
             }
         }
     }
@@ -52,6 +61,7 @@ public class Zombi extends Personaje {
             if (x < 0) {
                 seMueve = false;
                 JOptionPane.showMessageDialog(panelJuego, "Los zombis ganan!");
+                System.out.print("Escribiendo partida perdida");
                 VentanaJuego.ventanaJuego.dispose(); //
             }
         }
@@ -65,8 +75,8 @@ public class Zombi extends Personaje {
 
     public static Zombi getZombi(String type, PanelJuego padre, int fila) {
         Zombi zombi = null;
-        if (type.equals("NormalZombie")) {zombi = new ZombiNormal(padre, fila);}
-        else if (type.equals("ConeHeadZombie")) {zombi = new ZombiCabezaCono(padre, fila);}
+        if (type.equals("ZombiNormal")) {zombi = new ZombiNormal(padre, fila);}
+        else if (type.equals("ZombiCabezaCono")) {zombi = new ZombiCabezaCono(padre, fila);}
         return zombi;
     }
 
