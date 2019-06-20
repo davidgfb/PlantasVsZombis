@@ -1,11 +1,7 @@
 package graficos;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import com.sun.java.swing.borders.*;
+import com.sun.java.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -38,8 +34,8 @@ public class PanelJuego extends JLayeredPane implements MouseMotionListener {
     private int mouseX, mouseY, soles;
     
     public PanelJuego(JLabel puntuacionSoles) {
-        setSize(1000, 752); //
-        setLayout(null); //
+        //setSize(1000, 752); //
+        //setLayout(null); //awt
         addMouseMotionListener(this); //
         this.puntuacionSoles = puntuacionSoles;
         setPuntuacionSoles(150);  

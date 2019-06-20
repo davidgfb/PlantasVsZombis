@@ -1,11 +1,10 @@
 package graficos;
 
+import com.sun.java.swing.borders.*;
 import modelo.Planta;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import com.sun.java.swing.*;
+
 
 public class Colisionador extends JPanel implements MouseListener {
 

@@ -20,8 +20,15 @@ public class Guisante {
             if (new Rectangle(x, 130 + miCarril * 120, 28, 28).intersects(new Rectangle(
                     zombi.getPosX(), 109 + miCarril * 120, 400, 120))) { //
                 zombi.quitaSalud(1); //igual que el zombi
-                //boolean sale = false;
                 
+                //boolean sale = false;
+                if (zombi.getSalud() < 0) {
+                    System.out.println("zombi muerto");
+
+                    panelJuego.getFilaZombis().get(miCarril).remove(zombi);
+                    
+                    //sale = true;
+                }
                 panelJuego.getFilaZombis().get(miCarril).remove(this); //
             }
         }

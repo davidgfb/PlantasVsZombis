@@ -1,7 +1,8 @@
 package graficos;
 
+import com.sun.java.swing.borders.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import com.sun.java.swing.*;
 
 //@author David Gracia
 
@@ -22,7 +23,7 @@ public class VentanaJuego extends JFrame {
         
         setSize(1012, 785);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLayout(null);
+        //setLayout(null); //awt
 
         JLabel soles = new JLabel();
         

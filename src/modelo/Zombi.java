@@ -27,16 +27,6 @@ public class Zombi extends Personaje {
                 System.out.println("Ganaste!"); //NO FUNCIONA
             }
         }
-        
-        while (vida>0) {
-            if (this.vida < 0) {
-                System.out.println("zombi muerto");
-
-                panelJuego.getFilaZombis().get(miFila).remove(this);
-
-                //sale = true;
-            }
-        }
     }
 
     public void avanza() {

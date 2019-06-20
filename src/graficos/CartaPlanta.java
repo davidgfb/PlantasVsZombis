@@ -1,7 +1,8 @@
 package graficos;
 
+import com.sun.java.swing.borders.*;
 import javax.swing.*;
-import java.awt.*;
+import com.sun.java.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -9,10 +10,10 @@ import java.awt.event.MouseListener;
 
 public class CartaPlanta extends JPanel implements MouseListener {
 
-    private Image imagen;
+    private ImageIcon imagen;
     private ActionListener actionListener;
 
-    public CartaPlanta(Image imagen) {
+    public CartaPlanta(ImageIcon imagen) {
         setSize(64, 90); //
         this.imagen = imagen;
         addMouseListener(this); //
