@@ -34,6 +34,7 @@ public class PanelJuego extends javax.swing.JFrame {
         precioGirasol = new javax.swing.JLabel();
         botonCartaGirasol = new javax.swing.JButton();
         botonCartaLanzaGuisantes = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
         casilla11 = new javax.swing.JButton();
         casilla12 = new javax.swing.JButton();
         casilla13 = new javax.swing.JButton();
@@ -79,7 +80,6 @@ public class PanelJuego extends javax.swing.JFrame {
         casilla57 = new javax.swing.JButton();
         casilla58 = new javax.swing.JButton();
         casilla59 = new javax.swing.JButton();
-        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,324 +121,324 @@ public class PanelJuego extends javax.swing.JFrame {
         });
         panelJuego.add(botonCartaLanzaGuisantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 70, 90));
 
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graficos/imagenes/fondo.png"))); // NOI18N
+        fondo.setText("150");
+        panelJuego.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 750));
+
         casilla11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla11ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 100, 110));
+        panelJuego.add(casilla11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 110, 120));
 
         casilla12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla12ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 100, 110));
+        panelJuego.add(casilla12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 100, 120));
 
         casilla13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla13ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 100, 110));
+        panelJuego.add(casilla13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 120, 120));
 
         casilla14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla14ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 100, 110));
+        panelJuego.add(casilla14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 110, 120));
 
         casilla15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla15ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 100, 110));
+        panelJuego.add(casilla15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 110, 120));
 
         casilla16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla16ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 100, 110));
+        panelJuego.add(casilla16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 110, 120));
 
         casilla17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla17ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla17, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 100, 110));
+        panelJuego.add(casilla17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 110, 140));
 
         casilla18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla18ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 100, 110));
+        panelJuego.add(casilla18, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 110, 140));
 
         casilla19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla19ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla19, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 110, 100, 110));
+        panelJuego.add(casilla19, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, 110, 120));
 
         casilla21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla21ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 100, 110));
+        panelJuego.add(casilla21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 110, 130));
 
         casilla22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla22ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 100, 110));
+        panelJuego.add(casilla22, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 100, 130));
 
         casilla23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla23ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla23, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 100, 110));
+        panelJuego.add(casilla23, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 130));
 
         casilla24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla24ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla24, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 100, 110));
+        panelJuego.add(casilla24, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 110, 130));
 
         casilla25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla25ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla25, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 100, 110));
+        panelJuego.add(casilla25, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 110, 130));
 
         casilla26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla26ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla26, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 100, 110));
+        panelJuego.add(casilla26, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 110, 130));
 
         casilla27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla27ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla27, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 100, 110));
+        panelJuego.add(casilla27, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 110, 130));
 
         casilla28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla28ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla28, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 100, 110));
+        panelJuego.add(casilla28, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 110, 130));
 
         casilla29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla29ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla29, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 230, 100, 110));
+        panelJuego.add(casilla29, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 220, 130, 130));
 
         casilla31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla31ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 100, 110));
+        panelJuego.add(casilla31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 110, 130));
 
         casilla32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla32ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla32, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 100, 110));
+        panelJuego.add(casilla32, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 130));
 
         casilla33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla33ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 100, 110));
+        panelJuego.add(casilla33, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 120, 130));
 
         casilla34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla34ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla34, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 100, 110));
+        panelJuego.add(casilla34, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 110, 130));
 
         casilla35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla35ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla35, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 100, 110));
+        panelJuego.add(casilla35, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 110, 130));
 
         casilla36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla36ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla36, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 100, 110));
+        panelJuego.add(casilla36, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 110, 130));
 
         casilla37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla37ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla37, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 100, 110));
+        panelJuego.add(casilla37, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 110, 130));
 
         casilla38.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla38ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla38, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 100, 110));
+        panelJuego.add(casilla38, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 340, 110, 130));
 
         casilla39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla39ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla39, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, 100, 110));
+        panelJuego.add(casilla39, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 130, 130));
 
         casilla41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla41ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla41, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 100, 110));
+        panelJuego.add(casilla41, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 110, 130));
 
         casilla42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla42ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla42, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 100, 110));
+        panelJuego.add(casilla42, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 100, 130));
 
         casilla43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla43ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla43, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 100, 110));
+        panelJuego.add(casilla43, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 120, 130));
 
         casilla44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla44ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla44, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 100, 110));
+        panelJuego.add(casilla44, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 110, 130));
 
         casilla45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla45ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla45, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, 100, 110));
+        panelJuego.add(casilla45, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 110, 130));
 
         casilla46.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla46ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla46, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 100, 110));
+        panelJuego.add(casilla46, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 110, 130));
 
         casilla47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla47ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla47, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 100, 110));
+        panelJuego.add(casilla47, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 110, 130));
 
         casilla48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla48ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla48, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 100, 110));
+        panelJuego.add(casilla48, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 460, 110, 130));
 
         casilla49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla49ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla49, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 470, 100, 110));
+        panelJuego.add(casilla49, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 460, 130, 130));
 
         casilla51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla51ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla51, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 100, 110));
+        panelJuego.add(casilla51, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 130, 140));
 
         casilla52.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla52ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla52, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 590, 100, 110));
+        panelJuego.add(casilla52, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, 100, 140));
 
         casilla53.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla53ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla53, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 100, 110));
+        panelJuego.add(casilla53, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 120, 140));
 
         casilla54.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla54ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla54, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 100, 110));
+        panelJuego.add(casilla54, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 110, 140));
 
         casilla55.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla55ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla55, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 100, 110));
+        panelJuego.add(casilla55, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 580, 110, 140));
 
         casilla56.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla56ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla56, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 100, 110));
+        panelJuego.add(casilla56, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 110, 140));
 
         casilla57.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla57ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla57, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 100, 110));
+        panelJuego.add(casilla57, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 110, 140));
 
         casilla58.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla58ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla58, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 590, 100, 110));
+        panelJuego.add(casilla58, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 580, 110, 140));
 
         casilla59.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla59ActionPerformed(evt);
             }
         });
-        panelJuego.add(casilla59, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 590, 100, 110));
-
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graficos/imagenes/fondo.png"))); // NOI18N
-        fondo.setText("150");
-        panelJuego.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 750));
+        panelJuego.add(casilla59, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 130, 140));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
